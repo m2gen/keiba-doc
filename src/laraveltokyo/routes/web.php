@@ -14,12 +14,14 @@ use App\Http\Controllers\HelloController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/hello', [HelloController::class, 'index']);
+Route::get('/', [HelloController::class, 'index']);

@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 
 class HelloController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view('hello');
+        return view('top');
     }
 
     /**

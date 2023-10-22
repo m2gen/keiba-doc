@@ -1,10 +1,16 @@
 body {
-  background-image: url(https://i.imgur.com/Mg1xBHn.png);
-  background-color: rgba(255, 255, 255, 0.6);
-  background-blend-mode: lighten;
-  background-size: auto;
+  background-color: #fff;
+  font-family: "Noto Sans JP", YuGothic, "游ゴシック", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
-.main {
-  height: 900px;
+#bg-top-image {
+  background-size: auto;
+  height: 500px;
+  width: 100%;
+}
+
+#main-top-sec {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  color: #fff;
 }

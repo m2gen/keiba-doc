@@ -5,44 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>競馬ドック</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/ddbfae1daa.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('/css/top.css') }}">
 </head>
 
 <body>
-    <!-- ヘッダー -->
-    <header class="fixed-top">
-        <div class="container-fluid bg-black">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container">
-                    <a class="navbar-brand ms-3" href="#"><i class="fa-solid fa-horse-head" style="color: #fcfcfc;"></i></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item ms-4">
-                                <a class="nav-link fw-bold text-white" href="#">説明１</a>
-                            </li>
-                            <li class="nav-item ms-4">
-                                <a class="nav-link fw-bold text-white" href="#">説明２</a>
-                            </li>
-                            <li class="nav-item ms-4">
-                                <a class="nav-link fw-bold text-white" href="#">説明３</a>
-                            </li>
-                            <li class="nav-item ms-4">
-                                <a class="nav-link fw-bold text-white" href="#">説明４</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        </div>
-    </header>
+
+    <!-- ヘッダー&フッター -->
+    @extends('layouts.app')
 
     <!-- メイン -->
+    @section('content')
     <main>
         <div class="position-relative">
             <section id="bg-top-image" class="container-fluid" style="background-image: url(https://i.imgur.com/Mg1xBHn.png);">
@@ -96,15 +68,8 @@
             </li>
         </ul>
     </section>
+    @endsection
 
-    <!-- フッター -->
-    <footer class="footer bg-black">
-        <div class="container-fluid text-center text-white">
-            <p class="mb-0">Copyright © 2023 競馬ドック</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>

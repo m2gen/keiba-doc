@@ -1,0 +1,5 @@
+@media (min-width: 576px) {
+  #home-card {
+    width: 75%;
+  }
+}

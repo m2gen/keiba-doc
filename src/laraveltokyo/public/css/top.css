@@ -5,12 +5,11 @@ body {
 
 #bg-top-image {
   background-size: auto;
-  height: 500px;
-  width: 100%;
+  height: 450px;
 }
 
 #main-top-sec {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 30px;
   color: #fff;
 }

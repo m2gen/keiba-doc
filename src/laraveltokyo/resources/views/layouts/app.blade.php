@@ -25,9 +25,9 @@
 <body>
     <!-- ヘッダー -->
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-black sticky-md-top">
+        <nav class="navbar navbar-expand-md navbar-light shadow" style="background-color: #E7F4E7;">
             <div class="container">
-                <a class="navbar-brand text-white" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,16 +36,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold text-white" href="#">説明１</a>
+                            <a class="nav-link fw-bold" href="#">説明１</a>
                         </li>
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold text-white" href="#">説明２</a>
+                            <a class="nav-link fw-bold" href="#">説明２</a>
                         </li>
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold text-white" href="#">説明３</a>
+                            <a class="nav-link fw-bold" href="#">説明３</a>
                         </li>
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold text-white" href="#">説明４</a>
+                            <a class="nav-link fw-bold" href="#">説明４</a>
                         </li>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
@@ -99,8 +99,8 @@
         </main>
 
         <!-- フッター -->
-        <footer class="footer bg-black">
-            <div class="container-fluid text-center text-white">
+        <footer class="footer" style="background-color: #E7F4E7;">
+            <div class="container-fluid text-center">
                 <p class="mb-0">Copyright © 2023 競馬ドック</p>
             </div>
         </footer>

@@ -1,9 +1,12 @@
+@charset "utf-8";
+
 body {
   background-color: #fff;
   font-family: "Noto Sans JP", YuGothic, "游ゴシック", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
 #bg-top-image {
+  background-image: url('../images/topBg.png');
   background-size: auto;
   height: 450px;
 }

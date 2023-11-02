@@ -17,14 +17,14 @@
     @section('content')
     <main>
         <div class="position-relative">
-            <section id="bg-top-image" class="container-fluid" style="background-image: url(https://i.imgur.com/JdNF3y0.png);">
+            <section id="bg-top-image" class="container-fluid">
                 <div id="main-top-sec" class="container position-absolute top-50 start-50 translate-middle">
                     <h1 class="display-1 fw-bold opacity-100">競馬ドック</h1>
                     <p class="lead fw-bold">その日の収支を競馬場ごとに一括管理できるシンプルで使いやすい競馬収支アプリ</p>
                     @if (Route::has('login'))
                     <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                         @auth
-                        <a href="{{ url('/form') }}"></a>
+                        <a href="{{ url('/home') }}"></a>
                         @else
                         <a href="{{ route('login') }}">
                             <button type="submit" class="mt-5 btn btn-primary btn-lg">ログイン</button>

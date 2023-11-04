@@ -20,6 +20,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 </head>
 
 <body>
@@ -99,7 +100,7 @@
         </main>
 
         <!-- フッター -->
-        <footer class="footer" style="background-color: #E7F4E7;">
+        <footer class="footer mt-5" style="background-color: #E7F4E7;">
             <div class="container-fluid text-center">
                 <p class="mb-0">Copyright © 2023 競馬ドック</p>
             </div>

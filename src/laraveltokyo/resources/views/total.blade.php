@@ -8,9 +8,27 @@
 </head>
 
 <body>
-    <h3 class="m-4">収支合計：あああ</h3>
-    <p>購入：</p>
-    <p>払戻：</p>
+
+    @php
+    $PurchaseTotal = 0;
+    $RefundTotal = 0;
+    @endphp
+
+    @foreach($posts as $post)
+    @php
+    $PurchaseTotal += $post['purchase'];
+    $RefundTotal += $post['refund'];
+    @endphp
+    @endforeach
+
+    @php
+    $totalNum = $RefundTotal - $PurchaseTotal;
+    @endphp
+
+    <h3 class="mb-4">収支総額：{{ number_format($totalNum) }} 円</h3>
+    <p class="m-2">購入: {{ number_format($PurchaseTotal) }} 円</p>
+    <p class="m-2">払戻: {{ number_format($RefundTotal) }} 円</p>
+
 </body>
 
 </html>

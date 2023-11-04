@@ -1,10 +1,25 @@
 @extends('layouts.app')
 
+@section('content')
+
 @push('style')
-<link rel="stylesheet" href="{{ asset('/css/home.css') }}">
+<style>
+    .nav-pills .nav-link.active {
+        background-color: #000;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .nav-pills .nav-link {
+        color: #000;
+    }
+
+    .card {
+        background-color: #E7F4E7;
+    }
+</style>
 @endpush
 
-@section('content')
 <div class="container">
     <div class="row justify-content-md-center">
 
@@ -22,7 +37,7 @@
                         <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">週別</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">月別</button>
+                        <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">月別</button>
                     </li>
                 </ul>
             </div>
@@ -50,11 +65,15 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <a href="{{ route('list') }}" class="btn btn-dark mb-3">収支一覧を見る</a>
+            </div>
         </div>
 
         <!-- 入力フォーム -->
         <div class="col-lg-4 mt-5 ms-lg-3 card shadow">
-            <form action="" method="POST" class="text-center">
+            <form action="{{ route('total') }}" method="POST" class="text-center">
+                @csrf
                 <div class="card-body">
                     <h4 class="mt-2">収支入力フォーム</h4>
                     <div class="mb-3">
@@ -64,9 +83,10 @@
                     <div class="mb-2">
                         <select class="form-select" name="horse_track" aria-label="Default select example">
                             <option selected>競馬場を選択</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="東京競馬場">東京競馬場</option>
+                            <option value="京都競馬場">京都競馬場</option>
+                            <option value="阪神競馬場">阪神競馬場</option>
+                            <option value="中山競馬場">中山競馬場</option>
                         </select>
                     </div>
                     <div class="mb-2">
@@ -82,10 +102,9 @@
                         <textarea type="text" name="memo" class="form-control"></textarea>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mb-3">保存する</button>
+                <button type="submit" class="btn btn-dark mb-3">保存する</button>
             </form>
         </div>
-
     </div>
 </div>
 @endsection

@@ -1,1 +1,11 @@
 @charset "utf-8";
+
+.nav-pills {
+  --nav-pills-border-radius: 5px;
+  --nav-pills-link-active-color: #ffffff;
+  --nav-pills-link-active-bg: #0000ff;
+}
+
+body {
+  background-color: aqua;
+}

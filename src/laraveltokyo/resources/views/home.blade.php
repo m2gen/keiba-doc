@@ -48,19 +48,13 @@
                             @include('total')
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-                            <h3 class="m-4">収支合計：いいい</h3>
-                            <p>購入：</p>
-                            <p>払戻：</p>
+                            @include('day')
                         </div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-                            <h3 class="m-4">収支合計：ううう</h3>
-                            <p>購入：</p>
-                            <p>払戻：</p>
+                            @include('week')
                         </div>
                         <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
-                            <h3 class="m-4">収支合計：ええええ</h3>
-                            <p>購入：</p>
-                            <p>払戻：</p>
+                            @include('month')
                         </div>
                     </div>
                 </div>
@@ -83,10 +77,16 @@
                     <div class="mb-2">
                         <select class="form-select" name="horse_track" aria-label="Default select example">
                             <option selected>競馬場を選択</option>
+                            <option value="札幌競馬場">札幌競馬場</option>
+                            <option value="函館競馬場">函館競馬場</option>
+                            <option value="新潟競馬場">新潟競馬場</option>
+                            <option value="福島競馬場">福島競馬場</option>
+                            <option value="中山競馬場">中山競馬場</option>
                             <option value="東京競馬場">東京競馬場</option>
+                            <option value="中京競馬場">中京競馬場</option>
                             <option value="京都競馬場">京都競馬場</option>
                             <option value="阪神競馬場">阪神競馬場</option>
-                            <option value="中山競馬場">中山競馬場</option>
+                            <option value="小倉競馬場">小倉競馬場</option>
                         </select>
                     </div>
                     <div class="mb-2">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -26,8 +27,21 @@ class HomeController extends Controller
     public function index()
     {
         $user = \Auth::user();
+        // 合計
         $posts = Post::where('user_id', $user['id'])->get();
-        return view('home', compact('user', 'posts'));
+        // 日別
+        $today = Carbon::today();
+        $day = Post::whereDate('date', $today)->get();
+        // 週別
+        $weekStart = Carbon::now()->startOfWeek();
+        $weekEnd = Carbon::now()->endOfWeek();
+        $week = Post::whereBetween('date', [$weekStart, $weekEnd])->get();
+        // 月別
+        $monthStart = Carbon::now()->startOfMonth();
+        $monthEnd = Carbon::now()->endOfMonth();
+        $month = Post::whereBetween('date', [$monthStart, $monthEnd])->get();
+
+        return view('home', compact('user', 'posts', 'day', 'week', 'month'));
     }
 
     public function list()

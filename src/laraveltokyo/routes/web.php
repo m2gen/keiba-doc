@@ -13,5 +13,6 @@ Route::post('/home', [HomeController::class, 'store'])->name('total');
 // リスト
 Route::get('/list', [HomeController::class, 'list'])->name('list');
 Route::post('/list', [HomeController::class, 'store'])->name('list.store');
+Route::get('/edit/{id}', [HomeController::class, 'edit'])->name('edit');
 
 Route::get('/', [HelloController::class, 'index']);

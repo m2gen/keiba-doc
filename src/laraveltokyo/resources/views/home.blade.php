@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', '競馬ドック | ホーム')
 
 @push('style')
 <style>
@@ -15,7 +16,7 @@
     }
 
     .card {
-        background-color: #E7F4E7;
+        background-color: #FDFDDB;
     }
 </style>
 @endpush
@@ -24,11 +25,11 @@
     <div class="row justify-content-md-center">
 
         <!-- 収益表示ページ -->
-        <div class="card mt-5 col-lg-6 shadow text-center">
-            <div class="card-body">
+        <div class="card mt-5 mx-1 col-lg-6 shadow text-center">
+            <div class="card-link mt-3">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">合計</button>
+                    <li class="nav-item ms-3" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">全期間合計</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">日別</button>
@@ -41,9 +42,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="card-body">
+            <div class="card-body d-flex align-items-center">
                 <div class="container-fluid">
-                    <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-content py-5" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                             @include('total')
                         </div>
@@ -65,7 +66,7 @@
         </div>
 
         <!-- 入力フォーム -->
-        <div class="col-lg-4 mt-5 ms-lg-3 card shadow">
+        <div class="col-lg-4 mt-5 mx-1 ms-lg-3 card shadow">
             <form action="{{ route('total') }}" method="POST" class="text-center">
                 @csrf
                 <div class="card-body">

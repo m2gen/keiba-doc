@@ -65,17 +65,12 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    public function show()
+    public function edit($id)
     {
-        //
-    }
+        $user = \Auth::user();
+        $posts = Post::where('user_id', $user['id'])->where('id', $id)->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return view('edit', compact('user', 'posts'));
     }
 
     /**

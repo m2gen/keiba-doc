@@ -16,8 +16,10 @@
 
     @foreach($day as $post)
     @php
+
     $PurchaseTotal += $post['purchase'];
     $RefundTotal += $post['refund'];
+
     @endphp
     @endforeach
 
@@ -25,9 +27,17 @@
     $totalNum = $RefundTotal - $PurchaseTotal;
     @endphp
 
-    <h3 class="mb-4">収支総額：{{ number_format($totalNum) }} 円</h3>
-    <p class="m-2">購入: {{ number_format($PurchaseTotal) }} 円</p>
-    <p class="m-2">払戻: {{ number_format($RefundTotal) }} 円</p>
+
+    @if($totalNum > 0)
+    <h3 class="mb-4 border-bottom border-black">収支総額：<span class="text-danger h1">+{{ number_format($totalNum) }}</span> 円</h3>
+    @else
+    <h3 class="mb-4 border-bottom border-black">収支総額：<span class="text-primary h1">{{ number_format($totalNum) }}</span> 円</h3>
+    @endif
+
+    <div class="row mt-5 justify-content-center">
+        <p class="col-md-5 p-2 h5">購入: {{ number_format($PurchaseTotal) }} 円</p>
+        <p class="col-md-5 p-2 h5">払戻: {{ number_format($RefundTotal) }} 円</p>
+    </div>
 
 </body>
 

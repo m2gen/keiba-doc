@@ -4,7 +4,7 @@
 @push('style')
 <style>
     .card {
-        background-color: #E7F4E7;
+        background-color: #FDFDDB;
     }
 </style>
 @endpush

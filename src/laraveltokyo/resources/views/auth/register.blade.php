@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', '競馬ドック | 新規登録')
+
 @push('style')
 <style>
     .card {
-        background-color: #E7F4E7;
+        background-color: #FDFDDB;
     }
 </style>
 @endpush

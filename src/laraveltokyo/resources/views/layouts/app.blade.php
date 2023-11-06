@@ -8,12 +8,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @hasSection('title')
+    <title>@yield('title')</title>
+    @else
+    <title>{{ config('app.name') }}</title>
+    @endif
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ddbfae1daa.js" crossorigin="anonymous"></script>
 
     <!-- CSS -->
     @stack('style')
@@ -26,10 +31,10 @@
 <body>
     <!-- ヘッダー -->
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow" style="background-color: #E7F4E7;">
+        <nav class="navbar navbar-expand-md navbar-light shadow" style="background-color: #FDFDDB;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    {{ config('app.name', '競馬ドック') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -100,7 +105,7 @@
         </main>
 
         <!-- フッター -->
-        <footer class="footer mt-5" style="background-color: #E7F4E7;">
+        <footer class="footer mt-5" style="background-color: #FDFDDB;">
             <div class="container-fluid text-center">
                 <p class="mb-0">Copyright © 2023 競馬ドック</p>
             </div>

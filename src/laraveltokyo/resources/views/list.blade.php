@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@section('title', '競馬ドック | 一覧')
+@section('title', '競馬ドック | リスト')
 
 @push('style')
 <style>
@@ -10,6 +10,22 @@
     }
 </style>
 @endpush
+
+<!-- 更新アラート -->
+@if (session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+<!-- 削除アラート -->
+@if (session('del'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('del') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <div class="container mt-4">
     <a href="{{ route('home') }}" class="btn btn-dark">←ホームに戻る</a>
@@ -22,7 +38,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-end">
                     <button type="button" class="btn btn-sm btn-dark">
-                        <a href="/edit/{{ $post['id'] }}" class="text-white">編集</a>
+                        <a href="/edit/{{ $post['id'] }}" class="text-white text-decoration-none">編集/削除</a>
                     </button>
                 </div>
                 <h6 class="p-1">日付：{{ $post->date }}</h6>

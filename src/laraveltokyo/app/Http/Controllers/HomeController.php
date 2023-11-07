@@ -33,9 +33,8 @@ class HomeController extends Controller
         $today = Carbon::today();
         $day = Post::whereDate('date', $today)->get();
         // 週別
-        $weekStart = Carbon::now()->startOfWeek();
-        $weekEnd = Carbon::now()->endOfWeek();
-        $week = Post::whereBetween('date', [$weekStart, $weekEnd])->get();
+        $sevenDaysAgo = Carbon::today()->subDays(7);
+        $week = Post::whereBetween('date', [$sevenDaysAgo, $today])->get();
         // 月別
         $monthStart = Carbon::now()->startOfMonth();
         $monthEnd = Carbon::now()->endOfMonth();
@@ -47,7 +46,7 @@ class HomeController extends Controller
     public function list()
     {
         $user = \Auth::user();
-        $posts = Post::where('user_id', $user['id'])->get();
+        $posts = Post::where('user_id', $user['id'])->orderBy('updated_at', 'DESC')->get();
         return view('list', compact('user', 'posts'));
     }
 
@@ -73,19 +72,27 @@ class HomeController extends Controller
         return view('edit', compact('user', 'posts'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $inputs = $request->all();
+
+        Post::where('id', $id)->update([
+            'date' => $inputs['date'],
+            'horse_track' => $inputs['horse_track'],
+            'purchase' => $inputs['purchase'],
+            'refund' => $inputs['refund'],
+            'memo' => $inputs['memo']
+        ]);
+
+        return redirect()->route('list')->with('success', '更新が完了しました');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function delete(Request $request, $id)
     {
-        //
+        $deletes = $request->all();
+
+        Post::where('id', $id)->delete($deletes);
+
+        return redirect()->route('list')->with('del', '削除が完了しました');
     }
 }

@@ -9,10 +9,17 @@
 @endpush
 @section('title', '競馬ドック | 編集フォーム')
 @section('content')
+
+<div class="container mt-4">
+    <a href="{{ route('list') }}" class="btn btn-dark">←リストに戻る</a>
+</div>
+
 <div class="container">
     <div class="row justify-content-center mx-1">
-        <div class="col-lg-4 card shadow mt-5">
-            <form action="{{ route('list') }}" method="POST" class="text-center">
+        <div class="col-lg-4 card shadow mt-3">
+            @foreach($posts as $post)
+            <form action="{{ route('update', ['id' => $post['id']]) }}" method="POST" class="text-center">
+                @endforeach
                 @csrf
                 <div class="card-body">
                     <h4>編集フォーム</h4>
@@ -50,8 +57,16 @@
                     </div>
                     @endforeach
                 </div>
-                <button type="submit" class="btn btn-dark mb-3">更新する</button>
+                <div class="text-center mb-3">
+                    <button type="submit" class="btn btn-dark w-75">更新する</button>
+                </div>
             </form>
+            @foreach($posts as $post)
+            <form action="{{ route('delete', ['id' => $post['id']]) }}" method="POST" class="text-center mb-3">
+                @csrf
+                <button class="btn btn-danger w-75">削除する</button>
+            </form>
+            @endforeach
         </div>
     </div>
 </div>

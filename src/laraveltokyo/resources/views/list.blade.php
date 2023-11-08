@@ -45,7 +45,9 @@
                 <h6 class="p-1">場所：{{ $post->horse_track }}</h6>
                 <h6 class="p-1">購入金額：{{ number_format($post->purchase) }} 円</h6>
                 <h6 class="p-1">払戻金額：{{ number_format($post->refund) }} 円</h6>
+                @if($post->memo)
                 <h6 class="p-1">メモ：{{ $post->memo }}</h6>
+                @endif
             </div>
         </div>
         @endforeach

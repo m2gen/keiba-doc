@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
@@ -50,9 +51,10 @@ class HomeController extends Controller
         return view('list', compact('user', 'posts'));
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $posts = new post();
+
+        $posts = new Post();
         $posts->date = $request->date;
         $posts->horse_track = $request->horse_track;
         $posts->purchase = $request->purchase;
@@ -61,7 +63,7 @@ class HomeController extends Controller
         $posts->user_id = auth()->user()->id;
         $posts->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', '登録が完了しました')->withInput();
     }
 
     public function edit($id)
@@ -72,7 +74,7 @@ class HomeController extends Controller
         return view('edit', compact('user', 'posts'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $inputs = $request->all();
 
@@ -84,7 +86,7 @@ class HomeController extends Controller
             'memo' => $inputs['memo']
         ]);
 
-        return redirect()->route('list')->with('success', '更新が完了しました');
+        return redirect()->route('list')->with('success', '更新が完了しました')->withInput();
     }
 
     public function delete(Request $request, $id)

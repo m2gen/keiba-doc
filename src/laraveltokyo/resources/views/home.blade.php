@@ -21,6 +21,26 @@
 </style>
 @endpush
 
+<!-- 入力エラーアラート -->
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    <button type=" button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+<!-- 登録成功アラート -->
+@if (session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="container">
     <div class="row justify-content-md-center">
 
@@ -67,17 +87,17 @@
 
         <!-- 入力フォーム -->
         <div class="col-lg-4 mt-5 mx-1 ms-lg-3 card shadow">
-            <form action="{{ route('total') }}" method="POST" class="text-center">
+            <form action="{{ route('home.store') }}" method="POST" class="text-center">
                 @csrf
                 <div class="card-body">
                     <h4 class="mt-2">収支入力フォーム</h4>
                     <div class="mb-3">
                         <label for="date" class="form-label"></label>
-                        <input type="date" name="date" class="form-control">
+                        <input type="date" name="date" class="form-control" value="{{ old('date') }}">
                     </div>
                     <div class="mb-2">
                         <select class="form-select" name="horse_track" aria-label="Default select example">
-                            <option selected>競馬場を選択</option>
+                            <option value="" selected>競馬場を選択</option>
                             <option value="札幌競馬場">札幌競馬場</option>
                             <option value="函館競馬場">函館競馬場</option>
                             <option value="新潟競馬場">新潟競馬場</option>
@@ -92,20 +112,21 @@
                     </div>
                     <div class="mb-2">
                         <label for="purchase" class="form-label">購入金額</label>
-                        <input type="number" id="tentacles" class="form-control" name="purchase" step="100" min="100" max="10000000000" />
+                        <input type="number" id="tentacles" class="form-control" name="purchase" value="{{ old('purchase') }}" step="100" min="100" max="100000000" />
                     </div>
                     <div class="mb-2">
                         <label for="refund" class="form-label">払戻金額</label>
-                        <input type="number" id="tentacles" class="form-control" name="refund" step="10" max="1000000000000" />
+                        <input type="number" id="tentacles" class="form-control" name="refund" value="{{ old('refund') }}" step="10" min="0" max="1000000000" />
                     </div>
                     <div class="mb-2">
                         <label for="memo" class="form-label">メモ(任意)</label>
-                        <textarea type="text" name="memo" class="form-control"></textarea>
+                        <textarea type="text" name="memo" class="form-control">{{ old('memo') }}</textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-dark mb-3">保存する</button>
             </form>
         </div>
+
     </div>
 </div>
 @endsection

@@ -3,14 +3,6 @@
 @section('content')
 @section('title', '競馬ドック | 新規登録')
 
-@push('style')
-<style>
-    .card {
-        background-color: #FDFDDB;
-    }
-</style>
-@endpush
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -73,7 +65,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-dark">
+                                <button type="submit" class="btn btn-primary">
                                     {{ __('新規登録') }}
                                 </button>
                             </div>

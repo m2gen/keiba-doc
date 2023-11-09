@@ -9,15 +9,34 @@
 
 <body>
 
-    @if($totalNum > 0)
-    <h3 class="mb-4 border-bottom border-black">収支総額：<span class="text-danger h1">+{{ number_format($totalNum) }}</span> 円</h3>
-    @else
-    <h3 class="mb-4 border-bottom border-black">収支総額：<span class="text-primary h1">{{ number_format($totalNum) }}</span> 円</h3>
-    @endif
+    <div class="container">
+        @if($weekData['totalNum'] > 0)
+        <h3 class="mb-3 p-1 border-bottom border-black">収支総額：<span class="text-danger h1">+{{ number_format($weekData['totalNum']) }}</span> 円</h3>
+        @else
+        <h3 class="mb-3 p-1 border-bottom border-black">収支総額：<span class="text-primary h1">{{ number_format($weekData['totalNum']) }}</span> 円</h3>
+        @endif
+        <div class="container">
+            <div class="row mt-3 justify-content-center border-bottom border-black">
+                <h5 class="col-md-5 p-1">購入: {{ number_format($weekData['PurchaseTotal']) }} 円</h5>
+                <h5 class="col-md-5 p-1">払戻: {{ number_format($weekData['RefundTotal']) }} 円</h5>
+            </div>
 
-    <div class="row mt-5 justify-content-center">
-        <p class="col-md-5 p-2 h5">購入: {{ number_format($PurchaseTotal) }} 円</p>
-        <p class="col-md-5 p-2 h5">払戻: {{ number_format($RefundTotal) }} 円</p>
+            <div class="row justify-content-evenly">
+                <ul class="col-md-4 fs-6 ms-5 mt-3 text-start">
+                    <li>的中率：{{ $weekData['winRate'] }} %</li>
+                    <li>回収率：{{ $weekData['recovery'] }} %</li>
+                    <li>最高購入額：</li>
+                    <li>最高払戻額：</li>
+                </ul>
+
+                <ul class="col-md-4 fs-6 ms-5 mt-md-3 text-start">
+                    <li>賭けた回数：{{ number_format($weekData['registerCount']) }} 回</li>
+                    <li>勝った回数：{{ number_format($weekData['winCount']) }} 回</li>
+                    <li>負けた回数：{{ number_format($weekData['defeatCount']) }} 回</li>
+                    <li>元返し回数：{{ number_format($weekData['sameCount']) }} 回</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
 </body>

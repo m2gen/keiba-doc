@@ -31,15 +31,26 @@ class HomeController extends Controller
         $posts = Post::where('user_id', $user['id'])->get();
         // 日別
         $today = Carbon::today();
-        $day = Post::where('user_id', $user['id'])->whereDate('date', $today)->get();
+        $dayPosts = Post::where('user_id', $user['id'])->whereDate('date', $today)->get();
         // 週別
         $sevenDaysAgo = Carbon::today()->subDays(7);
-        $week = Post::where('user_id', $user['id'])->whereBetween('date', [$sevenDaysAgo, $today])->get();
+        $weekPosts = Post::where('user_id', $user['id'])->whereBetween('date', [$sevenDaysAgo, $today])->get();
         // 月別
         $monthStart = Carbon::now()->startOfMonth();
         $monthEnd = Carbon::now()->endOfMonth();
-        $month = Post::where('user_id', $user['id'])->whereBetween('date', [$monthStart, $monthEnd])->get();
-        // 収支各データの変数と計算
+        $monthPosts = Post::where('user_id', $user['id'])->whereBetween('date', [$monthStart, $monthEnd])->get();
+
+        $totalData = $this->calculate($posts);
+        $dayData = $this->calculate($dayPosts);
+        $weekData = $this->calculate($weekPosts);
+        $monthData = $this->calculate($monthPosts);
+
+        return view('home', compact('user', 'posts', 'totalData', 'dayData', 'weekData', 'monthData'));
+    }
+
+    // 各期間に共通する必要な処理を計算
+    private function calculate($posts)
+    {
         $PurchaseTotal = 0;
         $RefundTotal = 0;
         $winCount = 0;
@@ -62,9 +73,10 @@ class HomeController extends Controller
 
         $totalNum = $RefundTotal - $PurchaseTotal;
         $recovery = round($RefundTotal / $PurchaseTotal * 100);
+        $winRate = round($winCount / $defeatCount * 100);
         $registerCount = count($posts);
 
-        return view('home', compact('user', 'posts', 'day', 'week', 'month', 'totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount'));
+        return compact('totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount', 'winRate');
     }
 
     // 必要な処理が入った変数をリストに渡す

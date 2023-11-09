@@ -1,15 +1,8 @@
 @extends('layouts.app')
 
-@push('style')
-<style>
-    .card {
-        background-color: #FDFDDB;
-    }
-</style>
-@endpush
 @section('title', '競馬ドック | 編集フォーム')
-@section('content')
 
+@section('content')
 <!-- 入力エラーアラート -->
 @if ($errors->any())
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -65,7 +58,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="memo" class="form-label">メモ(任意)</label>
-                        <textarea type="text" name="memo" class="form-control">{{ $post->memo }}{{ old('memo') }}</textarea>
+                        <textarea type="text" name="memo" class="form-control">{{ $post->memo }}</textarea>
                     </div>
                     @endforeach
                 </div>

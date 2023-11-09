@@ -21,6 +21,7 @@
     <script src="https://kit.fontawesome.com/ddbfae1daa.js" crossorigin="anonymous"></script>
 
     <!-- CSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('style')
 
     <!-- Scripts -->

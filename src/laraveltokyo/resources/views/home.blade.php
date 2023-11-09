@@ -14,10 +14,6 @@
     .nav-pills .nav-link {
         color: #000;
     }
-
-    .card {
-        background-color: #FDFDDB;
-    }
 </style>
 @endpush
 
@@ -45,7 +41,7 @@
     <div class="row justify-content-md-center">
 
         <!-- 収益表示ページ -->
-        <div class="card mt-5 mx-1 col-lg-6 shadow text-center">
+        <div class="card mt-5 mx-1 col-xl-6 shadow text-center">
             <div class="card-link mt-3">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item ms-3" role="presentation">
@@ -86,7 +82,7 @@
         </div>
 
         <!-- 入力フォーム -->
-        <div class="col-lg-4 mt-5 mx-1 ms-lg-3 card shadow">
+        <div class="col-xl-4 mt-5 mx-1 ms-lg-3 card shadow">
             <form action="{{ route('home.store') }}" method="POST" class="text-center">
                 @csrf
                 <div class="card-body">

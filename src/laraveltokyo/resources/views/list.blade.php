@@ -3,14 +3,6 @@
 @section('content')
 @section('title', '競馬ドック | リスト')
 
-@push('style')
-<style>
-    .card {
-        background-color: #FDFDDB;
-    }
-</style>
-@endpush
-
 <!-- 更新アラート -->
 @if (session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -41,12 +33,12 @@
                         <a href="/edit/{{ $post['id'] }}" class="text-white text-decoration-none">編集/削除</a>
                     </button>
                 </div>
-                <h6 class="p-1">日付：{{ $post->date }}</h6>
-                <h6 class="p-1">場所：{{ $post->horse_track }}</h6>
-                <h6 class="p-1">購入金額：{{ number_format($post->purchase) }} 円</h6>
-                <h6 class="p-1">払戻金額：{{ number_format($post->refund) }} 円</h6>
+                <h6>日付：{{ $post->date }}</h6>
+                <h6>場所：{{ $post->horse_track }}</h6>
+                <h6>購入金額：{{ number_format($post->purchase) }} 円</h6>
+                <h6>払戻金額：{{ number_format($post->refund) }} 円</h6>
                 @if($post->memo)
-                <h6 class="p-1">メモ：{{ $post->memo }}</h6>
+                <h6>メモ：{{ $post->memo }}</h6>
                 @endif
             </div>
         </div>

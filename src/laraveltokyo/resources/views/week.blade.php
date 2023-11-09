@@ -9,22 +9,6 @@
 
 <body>
 
-    @php
-    $PurchaseTotal = 0;
-    $RefundTotal = 0;
-    @endphp
-
-    @foreach($week as $post)
-    @php
-    $PurchaseTotal += $post['purchase'];
-    $RefundTotal += $post['refund'];
-    @endphp
-    @endforeach
-
-    @php
-    $totalNum = $RefundTotal - $PurchaseTotal;
-    @endphp
-
     @if($totalNum > 0)
     <h3 class="mb-4 border-bottom border-black">収支総額：<span class="text-danger h1">+{{ number_format($totalNum) }}</span> 円</h3>
     @else

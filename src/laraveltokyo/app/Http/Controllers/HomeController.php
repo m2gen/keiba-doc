@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
-use App\Models\User;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -25,32 +24,58 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // 必要な処理が入った変数をホーム画面に渡す
     public function index()
     {
-        $user = \Auth::user();
-        // 合計
+        $user = auth()->user();
         $posts = Post::where('user_id', $user['id'])->get();
         // 日別
         $today = Carbon::today();
-        $day = Post::whereDate('date', $today)->get();
+        $day = Post::where('user_id', $user['id'])->whereDate('date', $today)->get();
         // 週別
         $sevenDaysAgo = Carbon::today()->subDays(7);
-        $week = Post::whereBetween('date', [$sevenDaysAgo, $today])->get();
+        $week = Post::where('user_id', $user['id'])->whereBetween('date', [$sevenDaysAgo, $today])->get();
         // 月別
         $monthStart = Carbon::now()->startOfMonth();
         $monthEnd = Carbon::now()->endOfMonth();
-        $month = Post::whereBetween('date', [$monthStart, $monthEnd])->get();
+        $month = Post::where('user_id', $user['id'])->whereBetween('date', [$monthStart, $monthEnd])->get();
+        // 収支各データの変数と計算
+        $PurchaseTotal = 0;
+        $RefundTotal = 0;
+        $winCount = 0;
+        $defeatCount = 0;
+        $sameCount = 0;
 
-        return view('home', compact('user', 'posts', 'day', 'week', 'month'));
+        foreach ($posts as $post) {
+            $Purchase = $post['purchase'];
+            $Refund = $post['refund'];
+            if ($Refund > $Purchase) {
+                $winCount++;
+            } elseif ($Purchase > $Refund) {
+                $defeatCount++;
+            } else {
+                $sameCount++;
+            }
+            $PurchaseTotal += $Purchase;
+            $RefundTotal += $Refund;
+        }
+
+        $totalNum = $RefundTotal - $PurchaseTotal;
+        $recovery = round($RefundTotal / $PurchaseTotal * 100);
+        $registerCount = count($posts);
+
+        return view('home', compact('user', 'posts', 'day', 'week', 'month', 'totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount'));
     }
 
+    // 必要な処理が入った変数をリストに渡す
     public function list()
     {
-        $user = \Auth::user();
+        $user = auth()->user();
         $posts = Post::where('user_id', $user['id'])->orderBy('updated_at', 'DESC')->get();
         return view('list', compact('user', 'posts'));
     }
 
+    // フォームから送られてきた値をデータベースに保存する処理
     public function store(PostRequest $request)
     {
 
@@ -63,17 +88,19 @@ class HomeController extends Controller
         $posts->user_id = auth()->user()->id;
         $posts->save();
 
-        return redirect()->route('home')->with('success', '登録が完了しました')->withInput();
+        return redirect()->route('home')->with('success', '登録が完了しました');
     }
 
+    // 必要な処理が入った変数を編集画面に渡す
     public function edit($id)
     {
-        $user = \Auth::user();
+        $user = auth()->user();
         $posts = Post::where('user_id', $user['id'])->where('id', $id)->get();
 
         return view('edit', compact('user', 'posts'));
     }
 
+    // 編集画面から更新する処理
     public function update(PostRequest $request, $id)
     {
         $inputs = $request->all();
@@ -86,14 +113,16 @@ class HomeController extends Controller
             'memo' => $inputs['memo']
         ]);
 
-        return redirect()->route('list')->with('success', '更新が完了しました')->withInput();
+        return redirect()->route('list')->with('success', '更新が完了しました');
     }
 
+    // 編集画面から削除する処理
     public function delete(Request $request, $id)
     {
+        $user = auth()->user();
         $deletes = $request->all();
 
-        Post::where('id', $id)->delete($deletes);
+        Post::where('user_id', $user['id'])->where('id', $id)->delete($deletes);
 
         return redirect()->route('list')->with('del', '削除が完了しました');
     }

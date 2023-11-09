@@ -65,7 +65,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="memo" class="form-label">メモ(任意)</label>
-                        <textarea type="text" name="memo" class="form-control">{{ $post->memo }}</textarea>
+                        <textarea type="text" name="memo" class="form-control">{{ $post->memo }}{{ old('memo') }}</textarea>
                     </div>
                     @endforeach
                 </div>

@@ -29,9 +29,9 @@
         <div class="container card mt-3 shadow col-md-5" id="list-card">
             <div class="card-body">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-sm btn-dark">
-                        <a href="/edit/{{ $post['id'] }}" class="text-white text-decoration-none">編集/削除</a>
-                    </button>
+                    <a href="/edit/{{ $post['id'] }}" class="text-white text-decoration-none">
+                        <button type="button" class="btn btn-sm btn-dark">編集/削除</button>
+                    </a>
                 </div>
                 <h6>日付：{{ $post->date }}</h6>
                 <h6>場所：{{ $post->horse_track }}</h6>

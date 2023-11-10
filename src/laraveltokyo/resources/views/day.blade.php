@@ -25,8 +25,8 @@
                 <ul class="col-md-4 fs-6 ms-5 mt-3 text-start">
                     <li>的中率：{{ $dayData['winRate'] }} %</li>
                     <li>回収率：{{ $dayData['recovery'] }} %</li>
-                    <li>最高購入額：</li>
-                    <li>最高払戻額：</li>
+                    <li>最高購入額：{{ number_format($dayData['maxPurchase']) }}円</li>
+                    <li>最高払戻額：{{ number_format($dayData['maxRefund']) }}円</li>
                 </ul>
 
                 <ul class="col-md-4 fs-6 ms-5 mt-md-3 text-start">

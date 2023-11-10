@@ -1,20 +1,20 @@
-<!doctype html>
-<html lang="ja">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>競馬ドック</title>
-    <link rel="stylesheet" href="{{ asset('/css/top.css') }}">
-</head>
-
-<body>
-
-    <!-- ヘッダー&フッター -->
     @extends('layouts.app')
 
-    <!-- メイン -->
     @section('content')
+    @push('style')
+    <style>
+        #bg-top-image {
+            background-color: #FDFDDB;
+            height: 400px;
+        }
+
+        #main-top-sec {
+            padding: 30px;
+            color: #000;
+        }
+    </style>
+    @endpush
+
     <main>
         <div class="position-relative">
             <section id="bg-top-image" class="container-fluid">
@@ -26,12 +26,12 @@
                         @auth
                         <a href="{{ url('/home') }}"></a>
                         @else
-                        <a href="{{ route('login') }}">
-                            <button type="submit" class="mt-5 btn btn-primary btn-lg">ログイン</button>
+                        <a href="{{ route('login') }}" class="text-decoration-none">
+                            <button type="submit" class="mt-5 btn btn-warning btn-lg">ログイン</button>
                         </a>
                         @if (Route::has('register'))
-                        <a href="{{ route('register') }}">
-                            <button type="submit" class="mt-5 ms-3 btn btn-secondary btn-lg">新規登録</button>
+                        <a href="{{ route('register') }}" class="text-decoration-none">
+                            <button type="submit" class="mt-5 ms-3 btn btn-dark btn-lg">新規登録</button>
                         </a>
                         @endif
                         @endauth
@@ -42,34 +42,37 @@
         </div>
     </main>
 
-    <!-- セクション１ -->
     <section>
-        <ul class="container list-unstyled">
-            <li class="m-3 py-5 row">
-                <img class="object-fit-cover border rounded col-md-6 order-md-2" src="https://i.imgur.com/hHGklC0.png" alt="オルフェーヴル">
-                <div class="mt-5 col-md-6 order-md-1">
-                    <h1>競馬ドックとは</h1>
-                    <p>テキストテキストテキストテキストテキストテキスト<br />テキストテキストテキストテキストテキストテキストテキスト</p>
-                </div>
-            </li>
-            <li class="m-3 py-5 row">
-                <img class="object-fit-cover border rounded col-md-6" src="https://i.imgur.com/hHGklC0.png" alt="オルフェーヴル">
-                <div class="mt-5 text-md-end col-md-6">
-                    <h1>細かく記録できる</h1>
-                    <p>テキストテキストテキストテキストテキストテキスト<br />テキストテキストテキストテキストテキストテキストテキスト</p>
-                </div>
-            </li>
-            <li class="m-3 py-5 row">
-                <img class="object-fit-cover border rounded col-md-6 order-md-2" src="https://i.imgur.com/hHGklC0.png" alt="オルフェーヴル">
-                <div class="mt-5 col-md-6 order-md-1">
-                    <h1>グラフで収支を確認</h1>
-                    <p>テキストテキストテキストテキストテキストテキスト<br />テキストテキストテキストテキストテキストテキストテキスト</p>
-                </div>
-            </li>
-        </ul>
+        <figure class="figure container-fluid">
+            <div class="container">
+                <dl class="m-3 py-5 row justify-content-between">
+                    <img class="object-fit-cover img-thumbnail col-md-5 order-md-2" src="https://i.imgur.com/hHGklC0.png" alt="オルフェーヴル">
+                    <figcaption class="mt-5 col-md-5 order-md-1">
+                        <dt class="h1">競馬ドックとは</dt>
+                        <dd class="lead">
+                            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                        </dd>
+                    </figcaption>
+                </dl>
+                <dl class="m-3 py-5 row justify-content-between">
+                    <img class="object-fit-cover img-thumbnail col-md-5" src="https://i.imgur.com/hHGklC0.png" alt="オルフェーヴル">
+                    <figcaption class="mt-5 text-md-end col-md-5">
+                        <dt class="h1">細かく記録できる</dt>
+                        <dd class="lead">
+                            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                        </dd>
+                    </figcaption>
+                </dl>
+                <dl class="m-3 py-5 row justify-content-between">
+                    <img class="object-fit-cover img-thumbnail col-md-5 order-md-2" src="https://i.imgur.com/hHGklC0.png" alt="オルフェーヴル">
+                    <figcaption class="mt-5 col-md-5 order-md-1">
+                        <dt class="h1">グラフで収支を確認</dt>
+                        <dd class="lead">
+                            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                        </dd>
+                    </figcaption>
+                </dl>
+            </div>
+        </figure>
     </section>
     @endsection
-
-</body>
-
-</html>

@@ -1,8 +1,6 @@
 @extends('layouts.app')
-
-@section('content')
 @section('title', '競馬ドック | ホーム')
-
+@section('content')
 @push('style')
 <style>
     .nav-pills .nav-link.active {
@@ -16,7 +14,6 @@
     }
 </style>
 @endpush
-
 <!-- 入力エラーアラート -->
 @if ($errors->any())
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -28,7 +25,6 @@
     <button type=" button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-
 <!-- 登録成功アラート -->
 @if (session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -38,10 +34,10 @@
 @endif
 
 <div class="container">
-    <div class="row justify-content-md-center">
 
+    <div class="row justify-content-md-center">
         <!-- 収益表示ページ -->
-        <div class="card mt-5 mx-1 col-xl-6 shadow text-center">
+        <div class="card mt-5 mx-2 col-xl-6 shadow text-center">
             <div class="card-link mt-3">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item ms-3" role="presentation">
@@ -82,7 +78,7 @@
         </div>
 
         <!-- 入力フォーム -->
-        <div class="col-xl-4 mt-5 mx-1 ms-lg-3 card shadow">
+        <div class="col-xl-4 mt-5 mx-2 ms-lg-2 card shadow">
             <form action="{{ route('home.store') }}" method="POST" class="text-center">
                 @csrf
                 <div class="card-body">
@@ -122,7 +118,53 @@
                 <button type="submit" class="btn btn-dark mb-3">保存する</button>
             </form>
         </div>
-
     </div>
+
+    <!-- グラフ -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', {
+            packages: ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', '日付');
+            data.addColumn('number', '払戻金額');
+            data.addRows([
+                @php
+                foreach($graphPosts as $graphPost) {
+                    echo "['$graphPost->date', $graphPost->refund,],";
+                }
+                @endphp
+            ]);
+
+
+            var options = {
+                title: '払戻金額推移',
+                hAxis: {
+                    title: '日ごとの推移'
+                },
+                vAxis: {
+                    title: '払戻金額'
+                }
+            };
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('doc_Chart'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <div class="row justify-content-center">
+        <div class="card col-xl-10 m-3 p-4 shadow" style="overflow:auto;">
+            <div class=" card-body">
+                <div id="doc_Chart" style="height: 600px; width:100%;" />
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection

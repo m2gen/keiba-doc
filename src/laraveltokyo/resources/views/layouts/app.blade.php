@@ -32,7 +32,7 @@
 <body>
     <!-- ヘッダー -->
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow" style="background-color: #FDFDDB;">
+        <nav class="navbar navbar-expand-md navbar-light shadow">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', '競馬ドック') }}
@@ -43,16 +43,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold" href="#">説明１</a>
+                            <a class="nav-link" href="#">説明１</a>
                         </li>
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold" href="#">説明２</a>
+                            <a class="nav-link" href="#">説明２</a>
                         </li>
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold" href="#">説明３</a>
+                            <a class="nav-link" href="#">説明３</a>
                         </li>
                         <li class="nav-item ms-4">
-                            <a class="nav-link fw-bold" href="#">説明４</a>
+                            <a class="nav-link" href="#">説明４</a>
                         </li>
                     </ul>
                 </div>
@@ -106,9 +106,9 @@
         </main>
 
         <!-- フッター -->
-        <footer class="footer mt-5" style="background-color: #FDFDDB;">
+        <footer class="footer mt-5 bg-black">
             <div class="container-fluid text-center">
-                <p class="mb-0">Copyright © 2023 競馬ドック</p>
+                <p class="mb-0 text-white">Copyright © 2023 競馬ドック</p>
             </div>
         </footer>
 

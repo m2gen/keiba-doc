@@ -29,6 +29,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $posts = Post::where('user_id', $user['id'])->get();
+        $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(15)->get()->sortBy('date');
         // 日別
         $today = Carbon::today();
         $dayPosts = Post::where('user_id', $user['id'])->whereDate('date', $today)->get();
@@ -39,13 +40,13 @@ class HomeController extends Controller
         $monthStart = Carbon::now()->startOfMonth();
         $monthEnd = Carbon::now()->endOfMonth();
         $monthPosts = Post::where('user_id', $user['id'])->whereBetween('date', [$monthStart, $monthEnd])->get();
-
+        // calculateで計算をして返す
         $totalData = $this->calculate($posts);
         $dayData = $this->calculate($dayPosts);
         $weekData = $this->calculate($weekPosts);
         $monthData = $this->calculate($monthPosts);
 
-        return view('home', compact('user', 'posts', 'totalData', 'dayData', 'weekData', 'monthData'));
+        return view('home', compact('user', 'posts', 'graphPosts', 'totalData', 'dayData', 'weekData', 'monthData'));
     }
 
     // 各期間に共通する必要な処理を計算
@@ -56,6 +57,8 @@ class HomeController extends Controller
         $winCount = 0;
         $defeatCount = 0;
         $sameCount = 0;
+        $maxPurchase = 0;
+        $maxRefund = 0;
 
         foreach ($posts as $post) {
             $Purchase = $post['purchase'];
@@ -69,14 +72,16 @@ class HomeController extends Controller
             }
             $PurchaseTotal += $Purchase;
             $RefundTotal += $Refund;
+            $maxPurchase = max($maxPurchase, $Purchase);
+            $maxRefund = max($maxRefund, $Refund);
         }
 
         $totalNum = $RefundTotal - $PurchaseTotal;
-        $recovery = round($RefundTotal / $PurchaseTotal * 100);
-        $winRate = round($winCount / $defeatCount * 100);
+        $recovery = $PurchaseTotal != 0 ? round($RefundTotal / $PurchaseTotal * 100) : 0;
+        $winRate = $defeatCount != 0 ? round($winCount / $defeatCount * 100) : 0;
         $registerCount = count($posts);
 
-        return compact('totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount', 'winRate');
+        return compact('totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount', 'winRate', 'maxPurchase', 'maxRefund');
     }
 
     // 必要な処理が入った変数をリストに渡す

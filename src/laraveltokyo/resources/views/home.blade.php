@@ -58,22 +58,22 @@
                 <div class="container-fluid">
                     <div class="tab-content py-5" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                            @include('total')
+                            @include('seasons.total')
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-                            @include('day')
+                            @include('seasons.day')
                         </div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-                            @include('week')
+                            @include('seasons.week')
                         </div>
                         <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
-                            @include('month')
+                            @include('seasons.month')
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                <a href="{{ route('list') }}" class="btn btn-dark mb-3">収支一覧を見る</a>
+                <a href="{{ route('lists.list') }}" class="btn btn-dark mb-3">収支一覧を見る</a>
             </div>
         </div>
 
@@ -90,16 +90,35 @@
                     <div class="mb-2">
                         <select class="form-select" name="horse_track" aria-label="Default select example">
                             <option value="" selected>競馬場を選択</option>
-                            <option value="札幌競馬場">札幌競馬場</option>
-                            <option value="函館競馬場">函館競馬場</option>
-                            <option value="新潟競馬場">新潟競馬場</option>
-                            <option value="福島競馬場">福島競馬場</option>
-                            <option value="中山競馬場">中山競馬場</option>
-                            <option value="東京競馬場">東京競馬場</option>
-                            <option value="中京競馬場">中京競馬場</option>
-                            <option value="京都競馬場">京都競馬場</option>
-                            <option value="阪神競馬場">阪神競馬場</option>
-                            <option value="小倉競馬場">小倉競馬場</option>
+                            <optgroup label="中央競馬場">
+                                <option value="札幌競馬場">札幌競馬場</option>
+                                <option value="函館競馬場">函館競馬場</option>
+                                <option value="新潟競馬場">新潟競馬場</option>
+                                <option value="福島競馬場">福島競馬場</option>
+                                <option value="中山競馬場">中山競馬場</option>
+                                <option value="東京競馬場">東京競馬場</option>
+                                <option value="中京競馬場">中京競馬場</option>
+                                <option value="京都競馬場">京都競馬場</option>
+                                <option value="阪神競馬場">阪神競馬場</option>
+                                <option value="小倉競馬場">小倉競馬場</option>
+                            </optgroup>
+                            <optgroup label="地方競馬場">
+                                <option value="帯広競馬場">帯広競馬場</option>
+                                <option value="門別競馬場">門別競馬場</option>
+                                <option value="盛岡競馬場">盛岡競馬場</option>
+                                <option value="水沢競馬場">水沢競馬場</option>
+                                <option value="浦和競馬場">浦和競馬場</option>
+                                <option value="船橋競馬場">船橋競馬場</option>
+                                <option value="大井競馬場">大井競馬場</option>
+                                <option value="川崎競馬場">川崎競馬場</option>
+                                <option value="金沢競馬場">金沢競馬場</option>
+                                <option value="笠松競馬場">笠松競馬場</option>
+                                <option value="名古屋競馬場">名古屋競馬場</option>
+                                <option value="園田競馬場">園田競馬場</option>
+                                <option value="姫路競馬場">姫路競馬場</option>
+                                <option value="高知競馬場">高知競馬場</option>
+                                <option value="佐賀競馬場">佐賀競馬場</option>
+                            </optgroup>
                         </select>
                     </div>
                     <div class="mb-2">
@@ -129,31 +148,31 @@
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-            // Define the chart to be drawn.
             var data = new google.visualization.DataTable();
             data.addColumn('string', '日付');
+            data.addColumn('number', '購入金額');
             data.addColumn('number', '払戻金額');
             data.addRows([
                 @php
                 foreach($graphPosts as $graphPost) {
-                    echo "['$graphPost->date', $graphPost->refund,],";
+                    echo "['$graphPost->date', $graphPost->purchase, $graphPost->refund], ";
                 }
                 @endphp
             ]);
 
 
             var options = {
-                title: '払戻金額推移',
+                title: '購入・払戻金額推移',
+                pointSize: 7,
                 hAxis: {
-                    title: '日ごとの推移'
+                    title: '過去15日の推移'
                 },
                 vAxis: {
-                    title: '払戻金額'
+                    title: '金額'
                 }
             };
 
-            // Instantiate and draw the chart.
-            var chart = new google.visualization.ColumnChart(document.getElementById('doc_Chart'));
+            var chart = new google.visualization.LineChart(document.getElementById('doc_Chart'));
             chart.draw(data, options);
         }
     </script>

@@ -16,7 +16,7 @@
 @endif
 
 <div class="container mt-4">
-    <a href="{{ route('list') }}" class="btn btn-dark">←リストに戻る</a>
+    <a href="{{ route('lists.list') }}" class="btn btn-dark">←リストに戻る</a>
 </div>
 
 <div class="container">
@@ -36,16 +36,35 @@
                     <div class="mb-2">
                         <select class="form-select" name="horse_track" aria-label="Default select example">
                             <option selected>{{ $post->horse_track }}</option>
-                            <option value="札幌競馬場">札幌競馬場</option>
-                            <option value="函館競馬場">函館競馬場</option>
-                            <option value="新潟競馬場">新潟競馬場</option>
-                            <option value="福島競馬場">福島競馬場</option>
-                            <option value="中山競馬場">中山競馬場</option>
-                            <option value="東京競馬場">東京競馬場</option>
-                            <option value="中京競馬場">中京競馬場</option>
-                            <option value="京都競馬場">京都競馬場</option>
-                            <option value="阪神競馬場">阪神競馬場</option>
-                            <option value="小倉競馬場">小倉競馬場</option>
+                            <optgroup label="中央競馬場">
+                                <option value="札幌競馬場">札幌競馬場</option>
+                                <option value="函館競馬場">函館競馬場</option>
+                                <option value="新潟競馬場">新潟競馬場</option>
+                                <option value="福島競馬場">福島競馬場</option>
+                                <option value="中山競馬場">中山競馬場</option>
+                                <option value="東京競馬場">東京競馬場</option>
+                                <option value="中京競馬場">中京競馬場</option>
+                                <option value="京都競馬場">京都競馬場</option>
+                                <option value="阪神競馬場">阪神競馬場</option>
+                                <option value="小倉競馬場">小倉競馬場</option>
+                            </optgroup>
+                            <optgroup label="地方競馬場">
+                                <option value="帯広競馬場">帯広競馬場</option>
+                                <option value="門別競馬場">門別競馬場</option>
+                                <option value="盛岡競馬場">盛岡競馬場</option>
+                                <option value="水沢競馬場">水沢競馬場</option>
+                                <option value="浦和競馬場">浦和競馬場</option>
+                                <option value="船橋競馬場">船橋競馬場</option>
+                                <option value="大井競馬場">大井競馬場</option>
+                                <option value="川崎競馬場">川崎競馬場</option>
+                                <option value="金沢競馬場">金沢競馬場</option>
+                                <option value="笠松競馬場">笠松競馬場</option>
+                                <option value="名古屋競馬場">名古屋競馬場</option>
+                                <option value="園田競馬場">園田競馬場</option>
+                                <option value="姫路競馬場">姫路競馬場</option>
+                                <option value="高知競馬場">高知競馬場</option>
+                                <option value="佐賀競馬場">佐賀競馬場</option>
+                            </optgroup>
                         </select>
                     </div>
                     <div class="mb-2">

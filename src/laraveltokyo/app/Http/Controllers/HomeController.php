@@ -29,6 +29,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $posts = Post::where('user_id', $user['id'])->get();
+        // グラフ用データ
         $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(15)->get()->sortBy('date');
         // 日別
         $today = Carbon::today();
@@ -84,14 +85,6 @@ class HomeController extends Controller
         return compact('totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount', 'winRate', 'maxPurchase', 'maxRefund');
     }
 
-    // 必要な処理が入った変数をリストに渡す
-    public function list()
-    {
-        $user = auth()->user();
-        $posts = Post::where('user_id', $user['id'])->orderBy('updated_at', 'DESC')->get();
-        return view('list', compact('user', 'posts'));
-    }
-
     // フォームから送られてきた値をデータベースに保存する処理
     public function store(PostRequest $request)
     {
@@ -130,7 +123,7 @@ class HomeController extends Controller
             'memo' => $inputs['memo']
         ]);
 
-        return redirect()->route('list')->with('success', '更新が完了しました');
+        return redirect()->route('lists.list')->with('success', '更新が完了しました');
     }
 
     // 編集画面から削除する処理
@@ -141,6 +134,6 @@ class HomeController extends Controller
 
         Post::where('user_id', $user['id'])->where('id', $id)->delete($deletes);
 
-        return redirect()->route('list')->with('del', '削除が完了しました');
+        return redirect()->route('lists.list')->with('del', '削除が完了しました');
     }
 }

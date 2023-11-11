@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+body {
+  background-color: #fff;
+  line-height: 1.6em;
+  overflow-wrap: break-word;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "メイリオ", sans-serif;
+}
+
+.card {
+  background-color: #FDFDDB;
+}

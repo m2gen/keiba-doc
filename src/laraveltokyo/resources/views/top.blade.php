@@ -4,7 +4,7 @@
     @push('style')
     <style>
         #bg-top-image {
-            background-color: #FDFDDB;
+            background-color: #fff;
             height: 400px;
         }
 
@@ -20,7 +20,7 @@
             <section id="bg-top-image" class="container-fluid">
                 <div id="main-top-sec" class="container position-absolute top-50 start-50 translate-middle">
                     <h1 class="display-1 fw-bold opacity-100">競馬ドック</h1>
-                    <p class="lead fw-bold">その日の収支を競馬場ごとに一括管理できるシンプルで使いやすい競馬収支アプリ</p>
+                    <p class="lead fw-bold">その日の収支を競馬場ごとに一括管理できるシンプルで使いやすい競馬専用収支アプリ</p>
                     @if (Route::has('login'))
                     <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                         @auth
@@ -42,7 +42,7 @@
         </div>
     </main>
 
-    <section>
+    <section class="bg-light">
         <figure class="figure container-fluid">
             <div class="container">
                 <dl class="m-3 py-5 row justify-content-between">

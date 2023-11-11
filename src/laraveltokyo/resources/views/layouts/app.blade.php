@@ -32,7 +32,7 @@
 <body>
     <!-- ヘッダー -->
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow">
+        <nav class="navbar navbar-expand-md navbar-light shadow" style=" background-color: #FDFDDB;">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', '競馬ドック') }}
@@ -101,14 +101,14 @@
         </nav>
 
         <!-- メインココンテンツ -->
-        <main class="min-vh-100">
+        <main class="min-vh-100 pb-5">
             @yield('content')
         </main>
 
         <!-- フッター -->
-        <footer class="footer mt-5 bg-black">
+        <footer class="footer" style=" background-color: #FDFDDB;">
             <div class="container-fluid text-center">
-                <p class="mb-0 text-white">Copyright © 2023 競馬ドック</p>
+                <p class="mb-0">Copyright © 2023 競馬ドック</p>
             </div>
         </footer>
 

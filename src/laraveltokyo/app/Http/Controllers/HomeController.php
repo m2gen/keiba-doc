@@ -30,7 +30,7 @@ class HomeController extends Controller
         $user = auth()->user();
         $posts = Post::where('user_id', $user['id'])->get();
         // グラフ用データ
-        $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(15)->get()->sortBy('date');
+        $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(18)->get()->sortBy('date');
         // 日別
         $today = Carbon::today();
         $dayPosts = Post::where('user_id', $user['id'])->whereDate('date', $today)->get();
@@ -88,6 +88,13 @@ class HomeController extends Controller
     // フォームから送られてきた値をデータベースに保存する処理
     public function store(PostRequest $request)
     {
+
+        $user = auth()->user();
+        $limits = Post::where('user_id', $user['id'])->count();
+
+        if ($limits >= 100) {
+            return redirect()->back()->withErrors(['error' => 'データの登録は100個までです']);
+        }
 
         $posts = new Post();
         $posts->date = $request->date;

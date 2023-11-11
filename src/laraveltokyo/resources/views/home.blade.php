@@ -165,7 +165,7 @@
                 title: '購入・払戻金額推移',
                 pointSize: 7,
                 hAxis: {
-                    title: '過去15日の推移'
+                    title: '過去18日分の収支データ'
                 },
                 vAxis: {
                     title: '金額'

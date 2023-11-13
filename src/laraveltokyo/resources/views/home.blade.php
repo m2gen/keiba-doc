@@ -56,7 +56,7 @@
             </div>
             <div class="card-body d-flex align-items-center">
                 <div class="container-fluid">
-                    <div class="tab-content py-5" id="pills-tabContent">
+                    <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                             @include('seasons.total')
                         </div>
@@ -87,7 +87,7 @@
                         <label for="date" class="form-label"></label>
                         <input type="date" name="date" class="form-control" value="{{ old('date') }}">
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <select class="form-select" name="horse_track" aria-label="Default select example">
                             <option value="" selected>競馬場を選択</option>
                             <optgroup label="中央競馬場">
@@ -118,20 +118,33 @@
                                 <option value="姫路競馬場">姫路競馬場</option>
                                 <option value="高知競馬場">高知競馬場</option>
                                 <option value="佐賀競馬場">佐賀競馬場</option>
+                                <option value="海外の競馬場">海外の競馬場</option>
                             </optgroup>
                         </select>
                     </div>
-                    <div class="mb-2">
-                        <label for="purchase" class="form-label">購入金額</label>
-                        <input type="number" id="tentacles" class="form-control" name="purchase" value="{{ old('purchase') }}" step="100" min="100" max="100000000" />
+                    <div class="mb-3">
+                        <input type="number" placeholder="購入金額" id="tentacles" class="form-control" name="purchase" value="{{ old('purchase') }}" step="100" min="100" max="100000000" />
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" placeholder="払戻金額" id="tentacles" class="form-control" name="refund" value="{{ old('refund') }}" step="10" min="0" max="1000000000" />
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" name="types" aria-label="Default select example">
+                            <option value="" selected>馬券の種類を選択</option>
+                            <option value="単勝">単勝</option>
+                            <option value="複勝">複勝</option>
+                            <option value="枠連">枠連</option>
+                            <option value="枠単">枠単</option>
+                            <option value="馬連">馬連</option>
+                            <option value="馬単">馬単</option>
+                            <option value="ワイド">ワイド</option>
+                            <option value="３連複">３連複</option>
+                            <option value="３連単">３連単</option>
+                            <option value="WIN5">WIN5</option>
+                        </select>
                     </div>
                     <div class="mb-2">
-                        <label for="refund" class="form-label">払戻金額</label>
-                        <input type="number" id="tentacles" class="form-control" name="refund" value="{{ old('refund') }}" step="10" min="0" max="1000000000" />
-                    </div>
-                    <div class="mb-2">
-                        <label for="memo" class="form-label">メモ(任意)</label>
-                        <textarea type="text" name="memo" class="form-control">{{ old('memo') }}</textarea>
+                        <textarea type="text" placeholder="メモ(任意)" name="memo" class="form-control">{{ old('memo') }}</textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-dark mb-3">保存する</button>

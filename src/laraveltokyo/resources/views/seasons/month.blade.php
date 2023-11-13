@@ -9,27 +9,33 @@
 
 <body>
 
+    <div class="container mb-4">
+        <p class="d-inline p-1">{{ \Carbon\Carbon::parse($monthStart)->format('m月d日') }} ～
+            {{ \Carbon\Carbon::parse($monthEnd)->format('m月d日') }}
+        </p>
+    </div>
+
     <div class="container">
         @if($monthData['totalNum'] > 0)
-        <h3 class="mb-3 p-1 border-bottom border-black">収支総額：<span class="text-danger h1">+{{ number_format($monthData['totalNum']) }}</span> 円</h3>
+        <h3 class="mb-3 p-1 d-inline border-bottom border-black">収支総額：<span class="text-danger h1">+{{ number_format($monthData['totalNum']) }}</span> 円</h3>
         @else
-        <h3 class="mb-3 p-1 border-bottom border-black">収支総額：<span class="text-primary h1">{{ number_format($monthData['totalNum']) }}</span> 円</h3>
+        <h3 class="mb-3 p-1 d-inline border-bottom border-black">収支総額：<span class="text-primary h1">{{ number_format($monthData['totalNum']) }}</span> 円</h3>
         @endif
         <div class="container">
-            <div class="row mt-3 justify-content-center border-bottom border-black">
+            <div class="row mt-3 justify-content-center">
                 <h5 class="col-md-5 p-1">購入: {{ number_format($monthData['PurchaseTotal']) }} 円</h5>
                 <h5 class="col-md-5 p-1">払戻: {{ number_format($monthData['RefundTotal']) }} 円</h5>
             </div>
 
-            <div class="row justify-content-evenly">
-                <ul class="col-md-4 fs-6 ms-5 mt-3 text-start">
+            <div class="row justify-content-evenly mt-2">
+                <ul class="col-md-5 fs-6">
                     <li>的中率：{{ $monthData['winRate'] }} %</li>
                     <li>回収率：{{ $monthData['recovery'] }} %</li>
                     <li>最高購入額：{{ number_format($monthData['maxPurchase']) }}円</li>
                     <li>最高払戻額：{{ number_format($monthData['maxRefund']) }}円</li>
                 </ul>
 
-                <ul class="col-md-4 fs-6 ms-5 mt-md-3 text-start">
+                <ul class="col-md-5 fs-6">
                     <li>賭けた回数：{{ number_format($monthData['registerCount']) }} 回</li>
                     <li>勝った回数：{{ number_format($monthData['winCount']) }} 回</li>
                     <li>負けた回数：{{ number_format($monthData['defeatCount']) }} 回</li>

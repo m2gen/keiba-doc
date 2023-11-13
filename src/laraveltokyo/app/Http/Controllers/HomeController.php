@@ -31,12 +31,16 @@ class HomeController extends Controller
         $posts = Post::where('user_id', $user['id'])->get();
         // グラフ用データ
         $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(18)->get()->sortBy('date');
+        // 最初の日付と最後の日付
+        $firstDate = Post::where('user_id', $user['id'])->orderBy('date', 'ASC')->first();
+        $lastDate = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->first();
         // 日別
         $today = Carbon::today();
         $dayPosts = Post::where('user_id', $user['id'])->whereDate('date', $today)->get();
         // 週別
-        $sevenDaysAgo = Carbon::today()->subDays(7);
-        $weekPosts = Post::where('user_id', $user['id'])->whereBetween('date', [$sevenDaysAgo, $today])->get();
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+        $weekPosts = Post::where('user_id', $user['id'])->whereBetween('date', [$startOfWeek, $endOfWeek])->get();
         // 月別
         $monthStart = Carbon::now()->startOfMonth();
         $monthEnd = Carbon::now()->endOfMonth();
@@ -47,7 +51,7 @@ class HomeController extends Controller
         $weekData = $this->calculate($weekPosts);
         $monthData = $this->calculate($monthPosts);
 
-        return view('home', compact('user', 'posts', 'graphPosts', 'totalData', 'dayData', 'weekData', 'monthData'));
+        return view('home', compact('user', 'posts', 'graphPosts', 'firstDate', 'lastDate', 'totalData', 'dayData', 'weekData', 'today', 'monthData', 'startOfWeek', 'endOfWeek', 'monthStart', 'monthEnd'));
     }
 
     // 各期間に共通する必要な処理を計算
@@ -60,6 +64,7 @@ class HomeController extends Controller
         $sameCount = 0;
         $maxPurchase = 0;
         $maxRefund = 0;
+        $refundCount = 0;
 
         foreach ($posts as $post) {
             $Purchase = $post['purchase'];
@@ -75,12 +80,15 @@ class HomeController extends Controller
             $RefundTotal += $Refund;
             $maxPurchase = max($maxPurchase, $Purchase);
             $maxRefund = max($maxRefund, $Refund);
+            if ($Refund > 0) {
+                $refundCount++;
+            }
         }
 
         $totalNum = $RefundTotal - $PurchaseTotal;
         $recovery = $PurchaseTotal != 0 ? round($RefundTotal / $PurchaseTotal * 100) : 0;
-        $winRate = $defeatCount != 0 ? round($winCount / $defeatCount * 100) : 0;
         $registerCount = count($posts);
+        $winRate = $registerCount != 0 ? round(($refundCount) / $registerCount * 100) : 0;
 
         return compact('totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount', 'winRate', 'maxPurchase', 'maxRefund');
     }
@@ -101,6 +109,7 @@ class HomeController extends Controller
         $posts->horse_track = $request->horse_track;
         $posts->purchase = $request->purchase;
         $posts->refund = $request->refund;
+        $posts->types = $request->types;
         $posts->memo = $request->memo;
         $posts->user_id = auth()->user()->id;
         $posts->save();
@@ -127,6 +136,7 @@ class HomeController extends Controller
             'horse_track' => $inputs['horse_track'],
             'purchase' => $inputs['purchase'],
             'refund' => $inputs['refund'],
+            'types' => $inputs['types'],
             'memo' => $inputs['memo']
         ]);
 

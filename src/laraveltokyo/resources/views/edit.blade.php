@@ -33,7 +33,7 @@
                         <label for="date" class="form-label"></label>
                         <input type="date" name="date" value="{{ $post->date }}" class="form-control">
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <select class="form-select" name="horse_track" aria-label="Default select example">
                             <option selected>{{ $post->horse_track }}</option>
                             <optgroup label="中央競馬場">
@@ -64,20 +64,33 @@
                                 <option value="姫路競馬場">姫路競馬場</option>
                                 <option value="高知競馬場">高知競馬場</option>
                                 <option value="佐賀競馬場">佐賀競馬場</option>
+                                <option value="海外の競馬場">海外の競馬場</option>
                             </optgroup>
                         </select>
                     </div>
-                    <div class="mb-2">
-                        <label for="purchase" class="form-label">購入金額</label>
-                        <input type="number" id="tentacles" class="form-control" value="{{ $post->purchase }}" name="purchase" step="100" min="100" max="10000000000" />
+                    <div class="mb-3">
+                        <input type="number" placeholder="購入金額" id="tentacles" class="form-control" value="{{ $post->purchase }}" name="purchase" step="100" min="100" max="10000000000" />
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" placeholder="払戻金額" id="tentacles" class="form-control" value="{{ $post->refund }}" name="refund" step="10" max="1000000000000" />
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" name="types" aria-label="Default select example">
+                            <option selected>{{ $post->types }}</option>
+                            <option value="単勝">単勝</option>
+                            <option value="複勝">複勝</option>
+                            <option value="枠連">枠連</option>
+                            <option value="枠単">枠単</option>
+                            <option value="馬連">馬連</option>
+                            <option value="馬単">馬単</option>
+                            <option value="ワイド">ワイド</option>
+                            <option value="３連複">３連複</option>
+                            <option value="３連単">３連単</option>
+                            <option value="WIN5">WIN5</option>
+                        </select>
                     </div>
                     <div class="mb-2">
-                        <label for="refund" class="form-label">払戻金額</label>
-                        <input type="number" id="tentacles" class="form-control" value="{{ $post->refund }}" name="refund" step="10" max="1000000000000" />
-                    </div>
-                    <div class="mb-2">
-                        <label for="memo" class="form-label">メモ(任意)</label>
-                        <textarea type="text" name="memo" class="form-control">{{ $post->memo }}</textarea>
+                        <textarea type="text" placeholder="メモ(任意)" name="memo" class="form-control">{{ $post->memo }}</textarea>
                     </div>
                     @endforeach
                 </div>

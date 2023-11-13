@@ -39,6 +39,7 @@
                 <h6>場所：{{ $maxPurchase->horse_track }}</h6>
                 <h6 class="fw-bold">購入金額：{{ number_format($maxPurchase->purchase) }} 円</h6>
                 <h6>払戻金額：{{ number_format($maxPurchase->refund) }} 円</h6>
+                <h6>馬券の種類：{{ $maxPurchase->types }}</h6>
                 @if($maxPurchase->memo)
                 <h6>メモ：{{ $maxPurchase->memo }}</h6>
                 @endif

@@ -55,6 +55,7 @@
                 <h6>場所：{{ $new->horse_track }}</h6>
                 <h6>購入金額：{{ number_format($new->purchase) }} 円</h6>
                 <h6>払戻金額：{{ number_format($new->refund) }} 円</h6>
+                <h6>馬券の種類：{{ $new->types }}</h6>
                 @if($new->memo)
                 <h6>メモ：{{ $new->memo }}</h6>
                 @endif

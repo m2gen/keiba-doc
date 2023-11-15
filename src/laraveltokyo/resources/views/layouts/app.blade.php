@@ -14,11 +14,11 @@
     <title>{{ config('app.name') }}</title>
     @endif
 
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ddbfae1daa.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ asset('images/keiba40.png') }}">
 
     <!-- CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
         <nav class="navbar navbar-expand-md navbar-light shadow" style=" background-color: #FDFDDB;">
             <div class="container fw-bold">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('images/keiba50.png') }}" alt="アイコン">
+                    {{ config('app.name', '競馬ドック') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

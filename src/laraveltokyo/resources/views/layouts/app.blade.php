@@ -33,9 +33,9 @@
     <!-- ヘッダー -->
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow" style=" background-color: #FDFDDB;">
-            <div class="container">
+            <div class="container fw-bold">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    {{ config('app.name', '競馬ドック') }}
+                    <img src="{{ asset('images/keiba50.png') }}" alt="アイコン">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -103,7 +103,7 @@
         </nav>
 
         <!-- メインココンテンツ -->
-        <main class="min-vh-100 pb-5">
+        <main class="min-vh-100">
             @yield('content')
         </main>
 

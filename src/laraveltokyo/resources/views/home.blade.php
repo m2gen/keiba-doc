@@ -190,7 +190,7 @@
         }
     </script>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         <div class="card col-xl-10 m-3 p-4 shadow" style="overflow:auto;">
             <div class=" card-body">
                 <div id="doc_Chart" style="height: 600px; width:100%;" />

@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container mb-5">
     <div class="row mx-1">
         @foreach($news as $new)
         <div class="container card mt-3 shadow col-md-5" id="list-card">

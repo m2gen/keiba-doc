@@ -11,7 +11,7 @@
     @hasSection('title')
     <title>@yield('title')</title>
     @else
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('競馬ドック') }}</title>
     @endif
 
     <link rel="dns-prefetch" href="//fonts.bunny.net">

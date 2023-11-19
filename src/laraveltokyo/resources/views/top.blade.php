@@ -1,6 +1,7 @@
     @extends('layouts.app')
 
     @section('content')
+    @section('title', '競馬ドック | 編集フォーム')
     @push('style')
     <style>
         #bg-top-image {

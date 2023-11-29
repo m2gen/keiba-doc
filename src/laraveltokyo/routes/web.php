@@ -10,7 +10,11 @@ use App\Http\Controllers\ListController;
 Auth::routes();
 
 // トップ画面
-Route::get('/', [HelloController::class, 'index']);
+Route::get('/', [HelloController::class, 'top']);
+
+//回収率計算ツール
+Route::get('/recovery', [HelloController::class, 'recovery_view'])->name('recovery_view');
+Route::post('/recovery', [HelloController::class, 'recovery'])->name('recovery');
 
 // ホーム
 Route::get('/home', [HomeController::class, 'index'])->name('home');

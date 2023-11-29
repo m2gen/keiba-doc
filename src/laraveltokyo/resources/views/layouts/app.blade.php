@@ -42,16 +42,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item ms-4">
-                            <a class="nav-link" href="#">説明１</a>
+                            <a class="nav-link" href="#">使い方</a>
                         </li>
                         <li class="nav-item ms-4">
-                            <a class="nav-link" href="#">説明２</a>
-                        </li>
-                        <li class="nav-item ms-4">
-                            <a class="nav-link" href="#">説明３</a>
-                        </li>
-                        <li class="nav-item ms-4">
-                            <a class="nav-link" href="#">説明４</a>
+                            <a class="nav-link" href="{{ route('recovery') }}">回収率計算ツール</a>
                         </li>
                     </ul>
                 </div>

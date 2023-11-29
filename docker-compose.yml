@@ -1,4 +1,4 @@
-# Compose fileのバージョン指定
+# Composefroneのバージョン指定
 version: '3'
 
 # どんなコンテナを立ち上げるか
@@ -44,7 +44,7 @@ services:
       - ./docker/db/data:/var/lib/mysql
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
-      - 3306:3306
+      - 3307:3306
 
   # ----------------------------------
   # phpMyAdminを動かすコンテナ
@@ -58,11 +58,17 @@ services:
 
     # コンテナと他のサービスを繋げる
     links:
-      - db
+     - db
 
     # localhost:8080 で phpmyadmin の管理画面にアクセス
     ports:
       - 1180:80
+
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=doc_db
+      - PMA_USER=doc_user
+      - PMA_PASSWORD=doc_pass
 
     # セッション情報をボリュームに設定して永続化
     volumes:
@@ -75,3 +81,4 @@ services:
     image: schickling/mailcatcher
     ports:
       - 1080:1080
+

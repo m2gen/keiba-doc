@@ -78,7 +78,7 @@
         </div>
 
         <!-- 入力フォーム -->
-        <div class="col-xl-4 mt-5 mx-2 ms-lg-2 card shadow">
+        <div class="col-xl-4 mt-5 card shadow">
             <form action="{{ route('home.store') }}" method="POST" class="text-center">
                 @csrf
                 <div class="card-body">

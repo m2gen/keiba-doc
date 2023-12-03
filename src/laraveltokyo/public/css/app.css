@@ -9,4 +9,5 @@ body {
 
 .card {
   background-color: #FDFDDB;
+  -webkit-overflow-scrolling: touch;
 }

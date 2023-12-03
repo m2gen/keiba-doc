@@ -65,7 +65,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('新規登録') }}
                                 </button>
                             </div>

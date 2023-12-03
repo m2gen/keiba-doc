@@ -18,7 +18,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ddbfae1daa.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="{{ asset('images/keiba40.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/競馬ドックicon.png') }}">
 
     <!-- CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,9 +31,10 @@
 <body>
     <!-- ヘッダー -->
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow" style=" background-color: #FDFDDB;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style=" background-color: #FDFDDB;">
             <div class="container fw-bold">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
+                    <img src="{{ asset('images/競馬ドックicon.png') }}" alt="Logo" width="45" height="45" class="d-inline-block align-self-center me-2">
                     競馬ドック
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -72,7 +73,7 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
@@ -103,7 +104,7 @@
         <!-- フッター -->
         <footer class="footer" style=" background-color: #FDFDDB;">
             <div class="container-fluid text-center">
-                <p class="mb-0">Copyright © 2023 競馬ドック</p>
+                <p class="mb-0">2023 競馬ドック</p>
             </div>
         </footer>
 

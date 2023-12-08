@@ -24,8 +24,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('style')
 
-    <!-- Scripts -->
-
 </head>
 
 <body>

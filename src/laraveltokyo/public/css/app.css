@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+body {
+  background-color: rgb(204, 255, 0, 0.1);
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "メイリオ", sans-serif;
+}

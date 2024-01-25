@@ -43,9 +43,9 @@
             </div>
         </div>
 
-        <!-- 入力フォーム -->
         <div class="row justify-content-evenly my-5">
-            <div class="col-lg-7 bg-white pt-4 shadow">
+            <!-- 収支一覧リスト -->
+            <div class="col-lg-7 bg-white py-4 shadow">
                 <div class="ms-3">
                     <p class="h4 fw-bold">収支一覧リスト</>
                     <p>登録したデータはすべて収支一覧からご覧いただけます。編集・削除もここから</p>
@@ -68,7 +68,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-4 bg-white shadow">
+            <!-- 入力フォーム -->
+            <div class="col-lg-4 mt-lg-0 mt-4 bg-white shadow">
                 <form action="{{ route('home.store') }}" method="POST" class="text-center">
                     @csrf
                     <div>

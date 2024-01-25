@@ -52,12 +52,12 @@
                                     @guest
                                     @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link text-light" href="{{ route('login') }}">ログイン</a>
+                                        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
                                     </li>
                                     @endif
                                     @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link text-light" href="{{ route('register') }}">新規登録</a>
+                                        <a class="nav-link" href="{{ route('register') }}">新規登録</a>
                                     </li>
                                     @endif
                                     @else
@@ -65,7 +65,7 @@
                                         <a class="nav-link" href="{{ route('home') }}"><i class="fa-sharp fa-solid fa-house me-2"></i>ホーム</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-sharp fa-solid fa-right-from-bracket me-2"></i>ログアウト</a>
+                                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-sharp fa-solid fa-right-from-bracket me-2"></i>ログアウト</a>
                                     </li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

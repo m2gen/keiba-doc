@@ -94,25 +94,33 @@
                         </span>
                         @endif
                     </div>
-                    <div class="mb-3">
-                        <select class="form-select {{ $errors->has('types') ? 'is-invalid' : '' }}" name="types" aria-label="Default select example">
-                            <option selected>{{ $post->types }}</option>
-                            <option value="単勝">単勝</option>
-                            <option value="複勝">複勝</option>
-                            <option value="枠連">枠連</option>
-                            <option value="枠単">枠単</option>
-                            <option value="馬連">馬連</option>
-                            <option value="馬単">馬単</option>
-                            <option value="ワイド">ワイド</option>
-                            <option value="３連複">３連複</option>
-                            <option value="３連単">３連単</option>
-                            <option value="WIN5">WIN5</option>
-                        </select>
-                        @if($errors->has('types'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('types') }}</strong>
-                        </span>
-                        @endif
+                    <div class="d-flex">
+                        <div class="mb-3 w-75">
+                            <select class="form-select {{ $errors->has('types') ? 'is-invalid' : '' }}" name="types" aria-label="Default select example">
+                                <option selected>{{ $post->types }}</option>
+                                <option value="単勝">単勝</option>
+                                <option value="複勝">複勝</option>
+                                <option value="枠連">枠連</option>
+                                <option value="枠単">枠単</option>
+                                <option value="馬連">馬連</option>
+                                <option value="馬単">馬単</option>
+                                <option value="ワイド">ワイド</option>
+                                <option value="３連複">３連複</option>
+                                <option value="３連単">３連単</option>
+                                <option value="WIN5">WIN5</option>
+                            </select>
+                            @if($errors->has('types'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('types') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-check mb-3 ms-3 mt-2 w-25">
+                            <input class="form-check-input" type="checkbox" name="multi2" id="flexCheckDefault" {{ $post->multi2 == 1 ? 'checked' : '' }}>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                マルチ
+                            </label>
+                        </div>
                     </div>
                     <div class="mb-2">
                         <textarea type="text" placeholder="メモ(任意)" name="memo" class="form-control {{ $errors->has('memo') ? 'is-invalid' : '' }}" style="height: 100px;">{{ $post->memo }}</textarea>

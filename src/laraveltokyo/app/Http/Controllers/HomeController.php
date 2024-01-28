@@ -30,7 +30,7 @@ class HomeController extends Controller
         $user = auth()->user();
         $posts = Post::where('user_id', $user['id'])->get();
         // グラフ用データ
-        $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(20)->get()->sortBy('date');
+        $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(14)->get()->sortBy('date');
         // 最初の日付と最後の日付
         $firstDate = Post::where('user_id', $user['id'])->orderBy('date', 'ASC')->first();
         $lastDate = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->first();
@@ -110,6 +110,7 @@ class HomeController extends Controller
         $posts->purchase = $request->purchase;
         $posts->refund = $request->refund;
         $posts->types = $request->types;
+        $posts->multi2 = $request->has('multi2');
         $posts->memo = $request->memo;
         $posts->user_id = auth()->user()->id;
         $posts->save();
@@ -130,6 +131,7 @@ class HomeController extends Controller
     public function update(PostRequest $request, $id)
     {
         $inputs = $request->all();
+        $inputs['multi2'] = $request->has('multi2') ? 1 : 0;
 
         Post::where('id', $id)->update([
             'date' => $inputs['date'],
@@ -137,6 +139,7 @@ class HomeController extends Controller
             'purchase' => $inputs['purchase'],
             'refund' => $inputs['refund'],
             'types' => $inputs['types'],
+            'multi2' => $inputs['multi2'],
             'memo' => $inputs['memo']
         ]);
 

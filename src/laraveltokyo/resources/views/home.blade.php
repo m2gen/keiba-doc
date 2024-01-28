@@ -2,10 +2,11 @@
 @section('title', '競馬ドック | ホーム')
 @section('content')
 
+<!-- 通知 -->
 @include('layouts.notification')
 
 <div class="container pb-4">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center px-3">
         <div class="col-lg-8 mt-5 pb-3 text-center bg-white shadow">
             <div class="mt-3">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -43,7 +44,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-evenly my-5">
+        <div class="row justify-content-evenly my-5 px-0">
             <!-- 収支一覧リスト -->
             <div class="col-lg-7 bg-white py-4 shadow">
                 <div class="ms-3">
@@ -139,25 +140,38 @@
                             </span>
                             @endif
                         </div>
-                        <div class="mb-3">
-                            <select class="form-select {{ $errors->has('types') ? 'is-invalid' : '' }}" name="types" aria-label="Default select example">
-                                <option value="" selected>馬券の種類を選択</option>
-                                <option value="単勝">単勝</option>
-                                <option value="複勝">複勝</option>
-                                <option value="枠連">枠連</option>
-                                <option value="枠単">枠単</option>
-                                <option value="馬連">馬連</option>
-                                <option value="馬単">馬単</option>
-                                <option value="ワイド">ワイド</option>
-                                <option value="３連複">３連複</option>
-                                <option value="３連単">３連単</option>
-                                <option value="WIN5">WIN5</option>
-                            </select>
-                            @if($errors->has('types'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('types') }}</strong>
-                            </span>
-                            @endif
+                        <div class="d-flex">
+                            <div class="mb-3 w-75">
+                                <select class="form-select {{ $errors->has('types') ? 'is-invalid' : '' }}" name="types" aria-label="Default select example">
+                                    <option value="" selected>馬券の種類を選択</option>
+                                    <option value="単勝">単勝</option>
+                                    <option value="複勝">複勝</option>
+                                    <option value="枠連">枠連</option>
+                                    <option value="枠単">枠単</option>
+                                    <option value="馬連">馬連</option>
+                                    <option value="馬単">馬単</option>
+                                    <option value="ワイド">ワイド</option>
+                                    <option value="３連複">３連複</option>
+                                    <option value="３連単">３連単</option>
+                                    <option value="WIN5">WIN5</option>
+                                </select>
+                                @if($errors->has('types'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('types') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-check mb-3 ms-3 mt-2 w-25">
+                                <input class="form-check-input {{ $errors->has('multi2') ? 'is-invalid' : '' }}" type="checkbox" name="multi2" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    マルチ
+                                </label>
+                                @if($errors->has('multi2'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('multi2') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                         </div>
                         <div class="mb-2">
                             <textarea type="text" placeholder="メモ(任意)" name="memo" class="form-control {{ $errors->has('memo') ? 'is-invalid' : '' }}">{{ old('memo') }}</textarea>
@@ -208,7 +222,7 @@
             title: '購入・払戻金額推移',
             isStacked: true,
             hAxis: {
-                title: '日付（最大過去20日）',
+                title: '日付（最大過去14日）',
                 textStyle: {
                     color: '#333',
                     fontSize: 12
@@ -234,6 +248,10 @@
                 left: '10%',
                 width: '80%',
                 height: '70%'
+            },
+            legend: {
+                position: 'top',
+                alignment: 'end'
             }
         };
 

@@ -17,7 +17,7 @@ class ListController extends Controller
     public function list()
     {
         $user = auth()->user();
-        $news = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->paginate(10);
+        $news = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->orderBy('updated_at', 'DESC')->paginate(10);
 
         return view('lists.list', compact('user', 'news'));
     }

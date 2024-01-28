@@ -14,6 +14,7 @@ class PostRequest extends FormRequest
             'purchase' => 'required|digits_between:3,9|min:0',
             'refund' => 'required|digits_between:0,10|min:0',
             'types' => 'required|in:単勝,複勝,枠連,枠単,馬連,馬単,ワイド,３連複,３連単,WIN5',
+            'multi2' => 'nullable',
             'memo' => 'nullable|string|max:200'
         ];
     }

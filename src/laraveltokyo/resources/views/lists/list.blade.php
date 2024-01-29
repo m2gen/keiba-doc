@@ -6,6 +6,7 @@
 
 @include('layouts.notification')
 
+
 <div class="container">
     <div class="row">
         <div class="col mt-4 text-start">
@@ -74,4 +75,5 @@
         </div>
     </div>
 </div>
+
 @endsection

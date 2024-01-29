@@ -37,7 +37,10 @@
                 <h6>場所：{{ $update->horse_track }}</h6>
                 <h6>購入金額：{{ number_format($update->purchase) }} 円</h6>
                 <h6>払戻金額：{{ number_format($update->refund) }} 円</h6>
-                <h6>馬券の種類：{{ $update->types }}</h6>
+                <div class="d-flex">
+                    <h6>馬券の種類：{{ $update->types }}</h6>
+                    <h6>{{ $update->multi2 == 1 ? 'マルチ' : '' }}</h6>
+                </div>
                 <div class="d-flex">
                     <h6>メモ：</h6>
                     <h6>{!! nl2br(e($update->memo)) !!}</h6>

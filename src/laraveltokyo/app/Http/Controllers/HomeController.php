@@ -51,7 +51,7 @@ class HomeController extends Controller
         $weekData = $this->calculate($weekPosts);
         $monthData = $this->calculate($monthPosts);
 
-        return view('home', compact('user', 'posts', 'graphPosts', 'firstDate', 'lastDate', 'totalData', 'dayData', 'weekData', 'today', 'monthData', 'startOfWeek', 'endOfWeek', 'monthStart', 'monthEnd'));
+        return view('home', compact('graphPosts', 'firstDate', 'lastDate', 'totalData', 'dayData', 'weekData', 'today', 'monthData', 'startOfWeek', 'endOfWeek', 'monthStart', 'monthEnd'));
     }
 
     // 各期間に共通する必要な処理を計算
@@ -100,8 +100,8 @@ class HomeController extends Controller
         $user = auth()->user();
         $limits = Post::where('user_id', $user['id'])->count();
 
-        if ($limits >= 100) {
-            return redirect()->back()->withErrors(['success' => 'データの登録は100個までです']);
+        if ($limits >= 500) {
+            return redirect()->back()->withErrors(['success' => 'データの登録は500個までです']);
         }
 
         $posts = new Post();

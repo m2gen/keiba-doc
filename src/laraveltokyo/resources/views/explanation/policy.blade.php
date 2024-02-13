@@ -73,7 +73,7 @@
         <h4>第10条（お問い合わせ窓口）</h4><br />
         本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。<br />
         <br />
-        <a href="#" class="btn btn-dark">お問い合わせ</a><br>
+        <a href="{{ asset('contact') }}" class="btn btn-dark">お問い合わせ</a><br>
         <br />
         <p class="text-end">以上</p>
     </div>

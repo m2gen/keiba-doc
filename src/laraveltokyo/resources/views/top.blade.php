@@ -64,13 +64,13 @@
                             過去の収支記録はすべて保存され、一覧で見やすくまとめられています。メモに残したレース名や買い目、競争馬のデータもここから確認可能。また編集・削除も容易にできて簡単に一括管理できます。
                         </dd>
                     </figcaption>
-                    <img class="mt-3 object-fit-cover shadow col-lg-5 order-lg-1" src="{{ asset('images/keibaE.png') }}" alt="リスト">
+                    <img class="mt-3 object-fit-cover shadow col-lg-5 order-lg-1" src="{{ asset('images/keiba-list.png') }}" alt="リスト">
                 </dl>
                 <dl class="m-3 py-5 row justify-content-between">
                     <figcaption class=" mt-5 col-lg-5 order-lg-1">
                         <dt class="h1 fw-bold border-bottom border-info">グラフで収支を確認</dt>
                         <dd class="fs-6 mt-3 fw-bold">
-                            過去18日分の購入金額と払戻金額の折れ線グラフを自動で作成します。あなたの賭け方の傾向、成功や失敗のパターンを視覚的に分析することで、パフォーマンスの改善に役立つでしょう。
+                            過去14日分の購入金額と払戻金額の折れ線グラフを自動で作成します。あなたの賭け方の傾向、成功や失敗のパターンを視覚的に分析することで、パフォーマンスの改善に役立つでしょう。
                         </dd>
                     </figcaption>
                     <img class="mt-3 object-fit-cover shadow img-thumbnail col-lg-5 order-lg-2" src="{{ asset('images/keibaC.png') }}" alt="グラフ">

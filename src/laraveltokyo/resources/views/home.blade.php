@@ -193,7 +193,7 @@
 <!-- グラフ -->
 <div class="container">
     <div class="bg-white shadow" style="overflow: auto;">
-        <div id="doc_Chart" style="height: 600px; width: 98%;">
+        <div id="doc_Chart" class="mx-auto" style="height: 650px; width: 100vh;">
         </div>
     </div>
 </div>
@@ -243,7 +243,7 @@
             },
             colors: ['#1b9e77', '#d95f02'],
             fontName: 'Arial',
-            backgroundColor: '#fafafa',
+            backgroundColor: '#ffffff',
             chartArea: {
                 left: '10%',
                 width: '80%',
@@ -259,6 +259,7 @@
         chart.draw(data, options);
     }
 </script>
+
 
 @endsection
 

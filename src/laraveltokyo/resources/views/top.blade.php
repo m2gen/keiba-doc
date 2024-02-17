@@ -52,7 +52,7 @@
                     <figcaption class="mt-5 col-lg-5">
                         <dt class="h1 fw-bold border-bottom border-danger">競馬ドックとは</dt>
                         <dd class="fs-6 mt-3 fw-bold">
-                            競馬ドックとは、地方から中央まで対応したシンプルで使いやすい競馬専用収支管理アプリです。日付、競馬場、購入金額、払戻金額、馬券の種類、メモまで細かく記録できます。入力されたデータから的中率や回収率、勝利数なども自動で算出されます。
+                            競馬ドックとは、地方から中央まで対応したシンプルで使いやすい競馬専用収支アプリです。webブラウザ専用で、メールアドレス、パスワードを設定すればすぐに始めることができます。日付、競馬場、購入金額、払戻金額、馬券の種類、メモまで細かく記録していきましょう。
                         </dd>
                     </figcaption>
                     <img class="mt-3 object-fit-cover shadow img-thumbnail col-lg-5" src="{{ asset('images/keibaA.png') }}" alt="競馬ドックとは">

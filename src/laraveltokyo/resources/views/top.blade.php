@@ -1,7 +1,7 @@
     @extends('layouts.app')
-
     @section('content')
     @section('title', '競馬ドック')
+
     @push('style')
     <style>
         #bg-top-image {
@@ -17,7 +17,7 @@
         }
     </style>
     @endpush
-
+    {{-- 画像＆ログイン表示 --}}
     <main>
         <div class="position-relative" id="bg-top-image">
             <section class="container-fluid">
@@ -44,7 +44,7 @@
             </section>
         </div>
     </main>
-
+    {{-- 詳細説明 --}}
     <section>
         <figure class="figure container-fluid">
             <div class="container">
@@ -55,7 +55,7 @@
                             競馬ドックとは、地方から中央まで対応したシンプルで使いやすい競馬専用収支アプリです。webブラウザ専用で、メールアドレス、パスワードを設定すればすぐに始めることができます。日付、競馬場、購入金額、払戻金額、馬券の種類、メモまで細かく記録していきましょう。
                         </dd>
                     </figcaption>
-                    <img class="mt-3 object-fit-cover shadow img-thumbnail col-lg-5" src="{{ asset('images/keibaA.png') }}" alt="競馬ドックとは">
+                    <img class="mt-3 object-fit-cover shadow img-thumbnail col-lg-5" src="{{ asset('images/keiba32.png') }}" alt="競馬ドックとは">
                 </dl>
                 <dl class="m-3 py-5 row justify-content-between">
                     <figcaption class="mt-5 text-lg-end col-lg-5 order-lg-2">

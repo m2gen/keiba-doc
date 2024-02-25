@@ -1,19 +1,6 @@
 @extends('layouts.app')
-
 @section('title', '競馬ドック | 編集フォーム')
-
 @section('content')
-<!-- 入力エラーアラート -->
-@if ($errors->any())
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    <button type=" button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
 
 <div class="container mt-4">
     <a href="{{ route('lists.list') }}" class="btn btn-dark">←リストに戻る</a>

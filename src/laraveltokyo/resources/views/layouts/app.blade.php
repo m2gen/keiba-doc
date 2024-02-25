@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @hasSection('title')
@@ -14,7 +12,7 @@
     <title>{{ config('app.name', '競馬ドック') }}</title>
     @endif
 
-    <!-- Google tag (gtag.js) -->
+    {{-- Google tag --}}
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V3D5L01FRC"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -27,32 +25,27 @@
         gtag('config', 'G-V3D5L01FRC');
     </script>
 
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ddbfae1daa.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="{{ asset('images/競馬ドックicon.png') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
-    <!-- CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('style')
 
 </head>
 
 <body>
-    <!-- ヘッダー -->
+    {{-- ヘッダー --}}
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: rgb(19, 100, 15);">
             <div class="container fw-bold">
-                <a class="navbar-brand text-light" href="{{ url('/') }}">
-                    <img src="{{ asset('images/競馬ドックicon.png') }}" alt="Logo" width="45" height="45">
-                    競馬ドック
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('images/header1.png') }}" alt="header" width="140" height="43">
                 </a>
                 <button class="navbar-toggler bg-light" type="button" data-bs-toggle="modal" data-bs-target="#navbarModal">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- モーダル -->
+                {{-- モーダル --}}
                 <div class="modal fade" id="navbarModal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -122,12 +115,12 @@
         </nav>
     </div>
 
-    <!-- メインココンテンツ -->
+    {{--メインコンテンツ --}}
     <main class="min-vh-100 pb-5">
         @yield('content')
     </main>
 
-    <!-- フッター -->
+    {{-- フッター --}}
     <footer class="mb-0" style="background-color: rgb(19, 100, 15);">
         <div class="container text-light">
             <div class="row">

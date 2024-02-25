@@ -6,19 +6,19 @@ services:
     ports:
       - "1111:80"
     build: ./docker/app
-    container_name: app
+    container_name: doc_app
     volumes:
       - ./src:/var/www/html
 
   db:
     image: mysql:8.0
-    container_name: db
+    container_name: doc_db
 
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
+      MYSQL_DATABASE: doc_db
+      MYSQL_USER: doc_user
+      MYSQL_PASSWORD: doc_pass
       TZ: 'Asia/Tokyo'
 
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
@@ -41,9 +41,9 @@ services:
 
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS=db
-      - PMA_USER=user
-      - PMA_PASSWORD=pass
+      - PMA_HOSTS=doc_db
+      - PMA_USER=doc_user
+      - PMA_PASSWORD=doc_pass
 
     volumes:
       - ./docker/phpmyadmin/sessions:/sessions

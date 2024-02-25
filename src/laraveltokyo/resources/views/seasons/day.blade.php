@@ -8,11 +8,10 @@
 </head>
 
 <body>
-
+    {{-- 今日のデータ --}}
     <div class="container mb-4">
         <p class="d-inline p-1">{{ $today->format('Y年m月d日') }}</p>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-7">
@@ -23,8 +22,8 @@
                 @endif
                 <div class="container">
                     <div class="mt-4">
-                        <h5 class="pt-2">購入: {{ number_format($dayData['PurchaseTotal']) }} 円</h5 class="pt-2">
-                        <h5 class="pt-2">払戻: {{ number_format($dayData['RefundTotal']) }} 円</h5>
+                        <h5 class="pt-2">購入: {{ number_format($dayData['purchaseTotal']) }} 円</h5 class="pt-2">
+                        <h5 class="pt-2">払戻: {{ number_format($dayData['refundTotal']) }} 円</h5>
                     </div>
                 </div>
             </div>

@@ -9,21 +9,11 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     // 必要な処理が入った変数をホーム画面に渡す
     public function index()
     {
@@ -32,8 +22,8 @@ class HomeController extends Controller
         // グラフ用データ
         $graphPosts = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->take(14)->get()->sortBy('date');
         // 最初の日付と最後の日付
-        $firstDate = Post::where('user_id', $user['id'])->orderBy('date', 'ASC')->first();
-        $lastDate = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->first();
+        $firstDate = Post::where('user_id', $user['id'])->orderBy('date', 'ASC')->value('date');
+        $lastDate = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->value('date');
         // 日別
         $today = Carbon::today();
         $dayPosts = Post::where('user_id', $user['id'])->whereDate('date', $today)->get();
@@ -57,8 +47,8 @@ class HomeController extends Controller
     // 各期間に共通する必要な処理を計算
     private function calculate($posts)
     {
-        $PurchaseTotal = 0;
-        $RefundTotal = 0;
+        $purchaseTotal = 0;
+        $refundTotal = 0;
         $winCount = 0;
         $defeatCount = 0;
         $sameCount = 0;
@@ -76,8 +66,8 @@ class HomeController extends Controller
             } else {
                 $sameCount++;
             }
-            $PurchaseTotal += $Purchase;
-            $RefundTotal += $Refund;
+            $purchaseTotal += $Purchase;
+            $refundTotal += $Refund;
             $maxPurchase = max($maxPurchase, $Purchase);
             $maxRefund = max($maxRefund, $Refund);
             if ($Refund > 0) {
@@ -85,12 +75,12 @@ class HomeController extends Controller
             }
         }
 
-        $totalNum = $RefundTotal - $PurchaseTotal;
-        $recovery = $PurchaseTotal != 0 ? round($RefundTotal / $PurchaseTotal * 100) : 0;
+        $totalNum = $refundTotal - $purchaseTotal;
+        $recovery = $purchaseTotal != 0 ? round($refundTotal / $purchaseTotal * 100) : 0;
         $registerCount = count($posts);
         $winRate = $registerCount != 0 ? round(($refundCount) / $registerCount * 100) : 0;
 
-        return compact('totalNum', 'PurchaseTotal', 'RefundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount', 'winRate', 'maxPurchase', 'maxRefund');
+        return compact('totalNum', 'purchaseTotal', 'refundTotal', 'recovery', 'registerCount', 'winCount', 'defeatCount', 'sameCount', 'winRate', 'maxPurchase', 'maxRefund');
     }
 
     // フォームから送られてきた値をデータベースに保存する処理

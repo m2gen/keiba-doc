@@ -35,4 +35,10 @@
         @endif
     </ul>
 </nav>
+<style>
+    .pagination .active .page-link {
+        background-color: #a8e6cf;
+        border-color: #a8e6cf;
+    }
+</style>
 @endif

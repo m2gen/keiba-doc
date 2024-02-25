@@ -26,7 +26,7 @@ class HelloController extends Controller
     {
         return view('explanation.term');
     }
-
+    // 回収率計算ツール
     public function recovery(Request $request)
     {
         $purchase = $request->input('purchase');

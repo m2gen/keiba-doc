@@ -2,11 +2,12 @@
 @section('title', '競馬ドック | ホーム')
 @section('content')
 
-<!-- 通知 -->
+{{-- 通知 --}}
 @include('layouts.notification')
 
 <div class="container pb-4">
     <div class="row justify-content-center px-3">
+        {{-- 収支表示 --}}
         <div class="col-lg-8 mt-5 pb-3 text-center bg-white shadow">
             <div class="mt-3">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -45,11 +46,12 @@
         </div>
 
         <div class="row justify-content-evenly my-5 px-0">
-            <!-- 収支一覧リスト -->
+            {{-- 収支一覧リスト --}}
             <div class="col-lg-7 bg-white py-4 shadow">
                 <div class="ms-3">
                     <p class="h4 fw-bold">収支一覧リスト</>
-                    <p>登録したデータはすべて収支一覧からご覧いただけます。編集・削除もここから</p>
+                    <p>登録したデータはすべて収支一覧からご覧いただけます。</p>
+                    <p>編集・削除もここから。</p>
                 </div>
                 <ul class="list-group ms-3 mt-5">
                     <li class="list-group-item list-group-item-action">
@@ -69,7 +71,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- 入力フォーム -->
+            {{-- 入力フォーム --}}
             <div class="col-lg-4 mt-lg-0 mt-4 bg-white shadow">
                 <form action="{{ route('home.store') }}" method="POST" class="text-center">
                     @csrf
@@ -190,7 +192,7 @@
 </div>
 
 
-<!-- グラフ -->
+{{-- グラフ --}}
 <div class="container">
     <div class="bg-white shadow" style="overflow: auto;">
         <div id="doc_Chart" class="mx-auto" style="height: 650px; width: 100vh;">

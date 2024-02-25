@@ -8,13 +8,12 @@
 </head>
 
 <body>
-
+    {{-- 週のデータ --}}
     <div class="container mb-4">
         <p class="d-inline p-1">{{ \Carbon\Carbon::parse($startOfWeek)->format('m月d日') }}(月) ～
             {{ \Carbon\Carbon::parse($endOfWeek)->format('m月d日') }}(日)
         </p>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-7">
@@ -25,8 +24,8 @@
                 @endif
                 <div class="container">
                     <div class="mt-4">
-                        <h5 class="pt-2">購入: {{ number_format($weekData['PurchaseTotal']) }} 円</h5 class="pt-2">
-                        <h5 class="pt-2">払戻: {{ number_format($weekData['RefundTotal']) }} 円</h5>
+                        <h5 class="pt-2">購入: {{ number_format($weekData['purchaseTotal']) }} 円</h5 class="pt-2">
+                        <h5 class="pt-2">払戻: {{ number_format($weekData['refundTotal']) }} 円</h5>
                     </div>
                 </div>
             </div>

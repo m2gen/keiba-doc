@@ -17,7 +17,7 @@ class ListController extends Controller
     public function list()
     {
         $user = auth()->user();
-        $news = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->orderBy('updated_at', 'DESC')->paginate(10);
+        $news = Post::where('user_id', $user['id'])->orderBy('date', 'DESC')->orderBy('updated_at', 'DESC')->paginate(14);
 
         return view('lists.list', compact('user', 'news'));
     }
@@ -26,7 +26,7 @@ class ListController extends Controller
     public function listOld()
     {
         $user = auth()->user();
-        $olds = Post::where('user_id', $user['id'])->orderBy('date', 'ASC')->paginate(10);
+        $olds = Post::where('user_id', $user['id'])->orderBy('date', 'ASC')->paginate(14);
 
         return view('lists.old', compact('user', 'olds'));
     }
@@ -35,7 +35,7 @@ class ListController extends Controller
     public function listUpdate()
     {
         $user = auth()->user();
-        $updates = Post::where('user_id', $user['id'])->orderBy('updated_at', 'DESC')->paginate(10);
+        $updates = Post::where('user_id', $user['id'])->orderBy('updated_at', 'DESC')->paginate(14);
 
         return view('lists.update', compact('user', 'updates'));
     }
@@ -44,7 +44,7 @@ class ListController extends Controller
     public function listPurchase()
     {
         $user = auth()->user();
-        $maxPurchases = Post::where('user_id', $user['id'])->orderBy('purchase', 'DESC')->paginate(10);
+        $maxPurchases = Post::where('user_id', $user['id'])->orderBy('purchase', 'DESC')->paginate(14);
 
         return view('lists.maxP', compact('user', 'maxPurchases'));
     }
@@ -53,7 +53,7 @@ class ListController extends Controller
     public function listRefund()
     {
         $user = auth()->user();
-        $maxRefunds = Post::where('user_id', $user['id'])->orderBy('refund', 'DESC')->paginate(10);
+        $maxRefunds = Post::where('user_id', $user['id'])->orderBy('refund', 'DESC')->paginate(14);
 
         return view('lists.maxR', compact('user', 'maxRefunds'));
     }

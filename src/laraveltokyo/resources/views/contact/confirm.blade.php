@@ -1,12 +1,12 @@
 @extends('layouts.app')
-
+@section('title', 'お問い合わせ')
 @section('content')
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow-lg">
                 <div class="card-header bg-dark text-white">お問い合わせ内容確認</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('send') }}">
                         @csrf
@@ -31,7 +31,6 @@
                                 <p class="form-control-plaintext">{!! nl2br(e($contact['contact'])) !!}</p>
                             </div>
                         </div>
-
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('contact') }}" class="btn btn-outline-dark">
                                 戻る
@@ -46,4 +45,5 @@
         </div>
     </div>
 </div>
+
 @endsection

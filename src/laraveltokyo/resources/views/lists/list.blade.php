@@ -1,18 +1,13 @@
 @extends('layouts.app')
-
 @section('title', '競馬ドック | リスト')
-
 @section('content')
-
 @include('layouts.notification')
-
 
 <div class="container">
     <div class="row">
         <div class="col mt-4 text-start">
             <a href="{{ route('home') }}" class="btn btn-dark">←ホームに戻る</a>
         </div>
-
         <div class="col mt-4 dropdown text-end">
             <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 新しい順
@@ -33,7 +28,6 @@
         <div class="container card mt-3 shadow col-md-5" id="list-card">
             <div class="card-body">
                 <div class="d-flex justify-content-end">
-                    <!-- ボタンをクリックするとモーダルが表示 -->
                     <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#modal{{ $new['id'] }}">編集/削除</button>
                 </div>
                 <h6>日付：{{ $new->date }}</h6>
@@ -51,7 +45,7 @@
             </div>
         </div>
 
-        <!-- モーダル -->
+        {{-- モーダル --}}
         <div class="modal fade" id="modal{{ $new['id'] }}" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">

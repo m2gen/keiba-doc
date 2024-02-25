@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', '回収率計算ツール')
-
 @section('content')
 
 <div class="container mt-5">

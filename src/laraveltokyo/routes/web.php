@@ -5,6 +5,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GoogleLoginController;
 
 
 Auth::routes();
@@ -40,3 +41,7 @@ Route::post('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('confirm');
 Route::post('/contact/thanks', [ContactController::class, 'send'])->name('send');
+
+// Googleでログインする
+Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('login.google.callback');

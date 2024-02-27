@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header h4 text-center">{{ __('ログイン') }}</div>
+                <div class="card-header bg-dark h4 text-light fw-bold text-center">{{ __('ログイン') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -50,12 +50,21 @@
                                 </button>
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('パスワードを忘れましたか？') }}
+                                    {{ __('パスワードを忘れた場合') }}
                                 </a>
                                 @endif
                             </div>
                         </div>
                     </form>
+                    <div class="row mt-4">
+                        <div class="col-md-6 offset-md-4">
+                            <a href="{{ route('login.google') }}" class="btn border border-dark p-2 text-decoration-none bg-warning-subtle fw-bold">
+                                <span>
+                                    <i class="fa-brands fa-google me-3"></i>Googleでログインする
+                                </span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

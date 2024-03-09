@@ -14,7 +14,7 @@
         </div>
         <section class="container-fluid">
             <div id="main-top-sec" class="container">
-                <div id="top-headline">
+                <div id="top-headline" class="pt-5">
                     <h1 class="display-1 fw-bold opacity-100">競馬ドック</h1>
                     <p class="lead fw-bold">地方から中央まで。その日の収支を細かく記録できる競馬専用収支アプリ。</p>
                 </div>

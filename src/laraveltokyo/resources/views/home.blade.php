@@ -194,7 +194,7 @@
 
 {{-- グラフ --}}
 <div class="container">
-    <div class="bg-white shadow" style="overflow: auto;">
+    <div class="bg-white shadow w-100" style="overflow: auto;">
         <div id="doc_Chart" class="mx-auto" style="height: 650px; width: 100vh;">
         </div>
     </div>
@@ -222,7 +222,7 @@
 
         var options = {
             title: '購入・払戻金額推移',
-            isStacked: true,
+            isStacked: false,
             hAxis: {
                 title: '日付（最大過去14日）',
                 textStyle: {
@@ -248,13 +248,16 @@
             backgroundColor: '#ffffff',
             chartArea: {
                 left: '10%',
-                width: '80%',
+                width: '100%',
                 height: '70%'
             },
             legend: {
                 position: 'top',
-                alignment: 'end'
-            }
+                alignment: 'end',
+            },
+            bar: {
+                groupWidth: '50%'
+            },
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('doc_Chart'));

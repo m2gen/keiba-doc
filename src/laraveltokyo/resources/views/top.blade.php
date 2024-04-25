@@ -24,11 +24,11 @@
                     <a href="{{ url('/home') }}"></a>
                     @else
                     <a href="{{ route('login') }}" class="text-decoration-none">
-                        <button type="submit" class="mt-5 btn btn-dark border btn-lg">ログイン</button>
+                        <button type="submit" class="mt-4 btn btn-dark border btn-lg">ログイン</button>
                     </a>
                     @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-decoration-none">
-                        <button type="submit" class="mt-5 ms-3 btn btn-dark border btn-lg">新規登録</button>
+                        <button type="submit" class="mt-4 ms-3 btn btn-dark border btn-lg">新規登録</button>
                     </a>
                     @endif
                     @endauth
@@ -66,7 +66,7 @@
                             過去14日分の購入金額と払戻金額の折れ線グラフを自動で作成します。あなたの賭け方の傾向、成功や失敗のパターンを視覚的に分析することで、パフォーマンスの改善に役立つでしょう。
                         </dd>
                     </figcaption>
-                    <img id="image3" class="mt-3 object-fit-cover shadow img-thumbnail col-lg-5 order-lg-2" src="{{ asset('images/keibaC.png') }}" alt="グラフ">
+                    <img id="image3" class="mt-3 object-fit-cover shadow img-thumbnail col-lg-5 order-lg-2" src="{{ asset('images/image-g.png') }}" alt="グラフ">
                 </dl>
             </div>
         </figure>
@@ -101,7 +101,7 @@
 
         #main-top-sec {
             position: absolute;
-            top: 30%;
+            top: 25%;
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 30px;

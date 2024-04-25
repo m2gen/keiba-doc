@@ -12,9 +12,9 @@
                 <div id="bg-top-image" class="bg"></div>
             </div>
         </div>
-        <section class="container-fluid">
-            <div id="main-top-sec" class="container">
-                <div id="top-headline" class="pt-5">
+        <section class="container">
+            <div id="main-top-sec">
+                <div class="text-white">
                     <h1 class="display-1 fw-bold opacity-100">競馬ドック</h1>
                     <p class="lead fw-bold">地方から中央まで。その日の収支を細かく記録できる競馬専用収支アプリ。</p>
                 </div>
@@ -99,17 +99,10 @@
             z-index: -1;
         }
 
+
         #main-top-sec {
             position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 30px;
-            color: #ffffff;
-        }
-
-        #top-headline {
-            text-align: left;
+            transform: translateY(-130%);
         }
     </style>
     @endpush
